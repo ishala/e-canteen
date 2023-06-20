@@ -56,5 +56,59 @@
             </div>
         </div>
     </div>
+
+    <div class="wrapper d-flex mt-5">
+        <div class="card ms-2">
+            <img src="/assets/buryam.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Bubur Ayam</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <div class="d-flex flex-row-reverse">
+                    <a href="#" class="btn btn-light text-danger">Pesan</a>
+                </div>
+            </div>
+        </div>
+        <div class="card ms-2">
+            <img src="/assets/buryam.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Bubur Ayam</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <div class="d-flex flex-row-reverse">
+                    <a href="#" class="btn btn-light text-danger">Pesan</a>
+                </div>
+            </div>
+        </div>
+        <div class="card ms-2">
+            <img src="/assets/buryam.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Bubur Ayam</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <div class="d-flex flex-row-reverse">
+                    <a href="#" class="btn btn-light text-danger">Pesan</a>
+                </div>
+            </div>
+        </div>
+        <div class="card ms-2">
+            <img src="/assets/buryam.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Bubur Ayam</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <div class="d-flex flex-row-reverse">
+                    <a href="#" class="btn btn-light text-danger">Pesan</a>
+                </div>
+            </div>
+        </div>
+        <div class="card ms-2">
+            <img src="/assets/buryam.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Bubur Ayam</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <div class="d-flex flex-row-reverse">
+                    <a href="#" class="btn btn-light text-danger">Pesan</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>

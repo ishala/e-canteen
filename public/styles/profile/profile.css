@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway&display=swap');
+
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+body {
+    background-color: #EBFFEC;
+}
+
+.container {
+    height: 500px;
+    border-radius: 20px;
+}
+
+.card {
+    height: 180px;
+    width: 200px;
+    border-radius: 25px;
+    justify-content: center;  
+    cursor: pointer;
+}
+
+.col > .card:hover {
+    transform:scale(1.1);
+}
+
+.card > img {
+    margin-left: 70px;
+    margin-top: 50px;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.row {
+    margin-left: 70px;
+    margin-top: 50px;   
+}
+
+.konten {
+    padding-top: 3%;
+}
+
+.konten > img {
+    height: 150px;
+}
+
+.konten h5 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-size: 30px;
+    line-height: 54px;
+    color: #000000;
+}
+
+.card-title {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 160%;
+    color: #000000;
+}
+
+.card .gmb2 {
+    margin-left: 60px;
+}

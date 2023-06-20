@@ -12,14 +12,15 @@
 <body>
     <h1 class="text-center fw-bold">E-Canteen</h1>
     <div class="container-fluid d-flex justify-content-center mt-5">
-        <form method="POST">
+        <form method="POST" action="/login">
+            @csrf
             <div class="inputan d-flex flex-row bg-white mb-3 border border-dark p-2">
                 <img src="/assets/email.png" alt="" class="ms-2 email">
-                <input type="text" class="ms-3 border border-0" id="email" name="email" placeholder="Masukkan email anda...">
+                <input type="text" class="ms-3 border border-0" id="email" name="email" placeholder="Masukkan email anda..." value="{{ old('email') }}">
             </div>
             <div class="inputan d-flex flex-row bg-white mb-3 border border-dark p-2">
                 <img src="/assets/lock.png" alt="" class="ms-3 lock">
-                <input type="password" class="ms-3 border border-0" id="password" name="password" placeholder="Masukkan password anda...">
+                <input type="password" class="ms-3 border border-0" id="password" name="password" placeholder="Masukkan password anda..." value="{{ old('password') }}">
                 <img src="/assets/eye.png" alt="" class="eye">
             </div>
             <div class="container d-flex justify-content-center rounded-5 tombol">

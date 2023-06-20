@@ -1,6 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BuyerController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegistController;
+use App\Http\Controllers\SellerController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,22 +20,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Registration
-Route::get('/login', function () {
-    return view('registration/login');
-});
+//profile
+Route::get('/edit-profile', [ProfileController::class, 'update']);
+Route::get('/profile', [ProfileController::class, 'index']);
+
+//Login
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'authenticate']);
+
+//Register
+Route::get('/register', [RegistController::class, 'index']);
+Route::get('/register/role', [RegistController::class, 'role']);
+Route::post('/register', [RegistController::class, 'store']);
+Route::post('/register/role', [RegistController::class, 'addRole']);
 
 //Admin
-Route::get('/main-page/admin', function () {
-    return view('admin/main_page_admin');
-});
+Route::get('/admin', [AdminController::class, 'index']);
+
+Route::get('/admin/detail-mitra/{id?}', [AdminController::class, 'edit']);
 
 //Seller
-Route::get('/main-page/seller', function () {
-    return view('seller/main_page');
-});
+Route::get('/seller', [SellerController::class, 'index']);
 
 //User
-Route::get('/main-page/user', function () {
-    return view('user/main_page_user');
-});
+
+//Product
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/detail-product', [ProductController::class, 'show']);

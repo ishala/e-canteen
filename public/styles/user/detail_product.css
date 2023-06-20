@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: white;
+}
+
+img{
+    height: 300px;
+    border-radius: 40px;
+    max-height: 400px;
+    overflow: hidden;
+}
+
+button{
+    width: 170px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #DF2E38;
+    border-style: none;
+    padding-top: 10px;
+}
+
+.keranjang{
+    background-color: #14A033;
+    color: white;
+    font-size: 20px;
+}
+
+.tambah{
+    background-color: white;
+    color: #14A033;
+    border: 1px solid #14A033;
+    font-size: 20px;
+}
+
+.favorite{
+    height: 30px;
+    margin-left: 350px;
+}
+
+.deskripsi{
+    text-align: justify;
+}
+
+.kuantitas{
+    height: 40px;
+}

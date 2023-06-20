@@ -13,44 +13,47 @@
     <h1 class="fw-bold fs-2 mt-3 ms-3">E-Canteen</h1>
     <div class="isian container d-flex justify-content-center bg-light">
         <!--FORM-->
-        <form method="POST">
+        <form method="POST" action="/register">
+            @csrf
             <h2 class="text-center fw-bold mt-4 mb-5">Sign Up</h2>
             <div class="row">
-                <div class="col-12 col-lg-6">
-                    <p>Nama*</p>
+                <div class="col-12 col-lg-12">
+                    <p>Nama</p>
                     <div class="inputan d-flex flex-row bg-white mb-3 border border-2 border-dark p-2">
-                        <input type="text" class="ms-3 border border-0" id="name" name="name" placeholder="Masukkan nama anda...">
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6">
-                    <p>Username*</p>
-                    <div class="inputan d-flex flex-row bg-white mb-3 border border-2 border-dark p-2">
-                        <input type="text" class="ms-3 border border-0" id="username" name="username" placeholder="Masukkan username anda...">
+                        <input type="text" class="ms-3 border border-0" id="name" name="name" placeholder="Masukkan nama anda..." value="{{ old('name') }}">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <p>Email*</p>
+                    <p>Email</p>
                     <div class="inputan d-flex flex-row bg-white mb-3 border border-2 border-dark p-2">
-                        <input type="text" class="ms-3 border border-0" id="email" name="email" placeholder="Masukkan email anda...">
+                        <input type="text" class="ms-3 border border-0" id="email" name="email" placeholder="Masukkan email anda..." value="{{ old('email') }}">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <p>Password*</p>
+                    <p>Role</p>
                     <div class="inputan d-flex flex-row bg-white mb-3 border border-2 border-dark p-2">
-                        <input type="password" class="ms-3 border border-0" id="password" name="password" placeholder="Masukkan password anda...">
+                        <input type="text" class="ms-3 border border-0" id="role" name="role" placeholder="Masukkan role..." value="{{ old('role') }}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p>Password</p>
+                    <div class="inputan d-flex flex-row bg-white mb-3 border border-2 border-dark p-2">
+                        <input type="password" class="ms-3 border border-0" id="password" name="password" placeholder="Masukkan password anda..." value="{{ old('password') }}">
                         <img src="/assets/eye.png" alt="" class="eye ms-4">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <p>Confirm Password*</p>
+                    <p>Confirm Password</p>
                     <div class="inputan d-flex flex-row bg-white mb-3 border border-2 border-dark p-2">
-                        <input type="password" class="ms-3 border border-0" id="chkpass" name="chkpass" placeholder="Konfirmasi password anda...">
+                        <input type="password" class="ms-3 border border-0" id="chkpass" name="chkpass" placeholder="Konfirmasi password anda..." value="{{ old('chkpass') }}">
                         <img src="/assets/eye.png" alt="" class="eye ms-4">
                     </div>
                 </div>
