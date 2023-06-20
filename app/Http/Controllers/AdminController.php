@@ -45,7 +45,7 @@ class AdminController extends Controller
      */
     public function edit(Admin $admin)
     {
-        //
+        return view('admin/detail_mitra');
     }
 
     /**

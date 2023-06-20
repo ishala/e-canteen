@@ -21,7 +21,7 @@ class SellerController extends Controller
      */
     public function create()
     {
-        //
+        return view('seller/add_product');
     }
 
     /**
@@ -45,7 +45,7 @@ class SellerController extends Controller
      */
     public function edit(Seller $seller)
     {
-        //
+        return view('seller/edit_product');
     }
 
     /**

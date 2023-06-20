@@ -38,11 +38,6 @@ class LoginController extends Controller
             }
         }
         
-
-
-        //ubah jadi array biasa
-        // $account = json_decode(json_encode($account), true);
-
         if ($account) {
             $request->session()->regenerate();
             return redirect()->intended('/products');
