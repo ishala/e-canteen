@@ -4,46 +4,62 @@ namespace App\Http\Controllers;
 
 use App\Models\Buyer;
 use App\Models\Seller;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class RegistController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('/registration/register');
     }
 
-    public function store(Request $request){
+    public function role(Request $request)
+    {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|unique:admins|unique:buyers|unique:sellers',
-            'role' => 'required|max:1',
             'password' => 'required|min:5|max:255',
-            'chkpass' => 'required|min:5|max:255'
         ]);
+        $validatedData = collect($validatedData);
 
-        if($validatedData){
-            if($validatedData['role'] == 2){
-                Seller::create($validatedData);
-                return redirect('/login');
-            }elseif($validatedData['role'] == 3){
-                Buyer::create($validatedData);
-                return redirect('/login');
-            }else{
-                return redirect()->back();
-            }
-            //return redirect()->action([RegistController::class, 'addRole'])->with('data', $validatedData);
-        }
+        $request->session()->put('name', $validatedData['name']);
+        $request->session()->put('email', $validatedData['email']);
+        $request->session()->put('password', $validatedData['password']);
+
+        return redirect('/register/role');
     }
 
-    public function addRole(Request $request){
-        $data = $request->session()->get('data');
-        $role = $request->input('/register/role');
-
-    }
-
-    public function role(){
+    public function addRoleView(Request $request){
+        $data = [
+            'name' => $request->session()->get('name'),
+            'email' => $request->session()->get('email'),
+            'password' => $request->session()->get('password'),
+        ];
+        
         return view('/registration/role', [
             'style' => '/styles/registration/role.css',
+            'data' => $data
         ]);
+    }
+
+    public function addRole(Request $request)
+    {   
+        $createData = $request->all();
+
+        if($createData['role'] == 3){
+            Seller::create([
+                'name' => $createData['name'],
+                'email' => $createData['email'],
+                'password' => $createData['password'],
+                'role' => $createData['role'],
+            ]);
+            echo 'ini buyer';
+        }
+        else{
+            echo 'ini seller';
+        }
     }
 }

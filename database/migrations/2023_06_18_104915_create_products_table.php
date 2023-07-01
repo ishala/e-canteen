@@ -18,7 +18,10 @@ return new class extends Migration
             $table->text('picture')->nullable();
             $table->integer('category');
             $table->foreignId('seller_id');
-            $table->foreign('seller_id')->references('id')->on('sellers'); 
+            $table->foreign('seller_id')->references('id')->on('sellers')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
+                    
             $table->timestamps();
         });
     }

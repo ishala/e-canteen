@@ -28,7 +28,7 @@
             </div>
         </form>
     </div>
-    <p class="text-center mt-2 fs-5">Don't have an account? <a href=""><span class="text-decoration-underline fw-bold text-black">Register</span></a></p>
+    <p class="text-center mt-2 fs-5">Don't have an account? <a href="{{ url('/register') }}"><span class="text-decoration-underline fw-bold text-black">Register</span></a></p>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 

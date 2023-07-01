@@ -13,7 +13,7 @@
     <h1 class="fw-bold fs-2 mt-3 ms-3">E-Canteen</h1>
     <div class="isian container d-flex justify-content-center bg-light">
         <!--FORM-->
-        <form method="POST" action="/register">
+        <form method="POST" action="/register/role">
             @csrf
             <h2 class="text-center fw-bold mt-4 mb-5">Sign Up</h2>
             <div class="row">
@@ -29,14 +29,6 @@
                     <p>Email</p>
                     <div class="inputan d-flex flex-row bg-white mb-3 border border-2 border-dark p-2">
                         <input type="text" class="ms-3 border border-0" id="email" name="email" placeholder="Masukkan email anda..." value="{{ old('email') }}">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <p>Role</p>
-                    <div class="inputan d-flex flex-row bg-white mb-3 border border-2 border-dark p-2">
-                        <input type="text" class="ms-3 border border-0" id="role" name="role" placeholder="Masukkan role..." value="{{ old('role') }}">
                     </div>
                 </div>
             </div>
@@ -59,7 +51,7 @@
                 </div>
             </div>
             <div class="container d-flex justify-content-center rounded-5 tombol mb-4">
-                <button type="submit" class="text-white mt-4 fs-4" name="register" value="register">REGISTER</button>
+                <button type="submit" class="text-white mt-4 fs-4">REGISTER</button>
             </div>
         </form>
     </div>

@@ -51,7 +51,7 @@ body{
 .iklan div img{
     height: 350px;
     position: absolute;
-    top: 100px;
+    top: 120px;
     right: 50px;
 }
 
@@ -94,4 +94,16 @@ body{
 .btn {
     box-shadow: 3px 3px 3px 0.25px grey;
     border-radius: 25px;
+}
+
+.navbar-brand{
+    height: 150px;
+    width: 200px;
+
+}
+
+.navbar{
+    background-color: #EBFFEC;
+    max-height: 150px;
+    overflow: hidden;
 }

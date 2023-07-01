@@ -1,0 +1,50 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #EBFFEC;
+}
+
+.container {
+    height: 500px;
+    width: 500px;
+    border-radius: 20px;
+}
+
+.enter {
+    text-align: center;
+    color: #000;
+    font-size: 15px;
+    font-family: Poppins;
+    font-weight: 700;
+}
+
+.enter1 {
+    text-align: center;
+    color: #ABABAB;
+    font-size: 15px;
+    font-family: Poppins;
+}
+
+.sign {
+    text-align: center;
+}
+
+.atas {
+    text-align: center;
+}
+
+.ikon img {
+    margin-left: 0;
+}
+
+.nvbr {
+    margin-top: 23px;
+    margin-right: 125px;
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    font-family: Poppins;
+    font-weight: 700;
+}

@@ -3,17 +3,35 @@
 namespace App\Http\Controllers;
 
 use App\Models\Seller;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreSellerRequest;
 use App\Http\Requests\UpdateSellerRequest;
+use App\Models\Product;
 
 class SellerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request, Product $product)
     {
-        return view('seller/main_page');
+        if ($request->cookie() != null) {
+            $akun = $request->cookie('account');
+            $akun = unserialize($akun);
+
+            //Ngambil data produk yang punya seller_id sama dengan id akun 
+            $myProduct = $product->where('seller_id', $akun->id)->get();
+
+            //Ngitung banyak produk
+            $totalProduct = $product->where('seller_id', $akun->id)->get()->count();
+
+            return view('seller/main_page', [
+                'title' => 'Dashboard Mitra',
+                'account' => $akun,
+                'products' => $myProduct,
+                'totalProducts' => $totalProduct,
+            ]);
+        }
     }
 
     /**
@@ -62,5 +80,10 @@ class SellerController extends Controller
     public function destroy(Seller $seller)
     {
         //
+    }
+
+    public function getRevenue()
+    {
+        return view('seller/revenue_seller');
     }
 }

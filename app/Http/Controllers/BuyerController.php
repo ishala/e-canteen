@@ -3,22 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\Buyer;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreBuyerRequest;
 use App\Http\Requests\UpdateBuyerRequest;
+use App\Models\Product;
+use App\Models\Seller;
 
 class BuyerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request, Product $product, Seller $seller)
     {
-        //
+        
     }
 
     /**
      * Show the form for creating a new resource.
      */
+    public function cartShow(Request $request, Product $product)
+    {
+        
+    }
+
     public function create()
     {
         //

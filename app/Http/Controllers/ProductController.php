@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 
@@ -11,13 +12,23 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Product $product)
+    public function index(Request $request, Product $product)
     {
-        return view('/buyer/products', [
-            'title' => 'Menu Utama Pembeli',
-            'style' => '/styles/user/products.css',
-            'product' => $product->all()
+        if($request->cookie() != null){
+        //Ngambil data dari session dengan nama key = akun
+        $akun = $request->cookie('account');
+
+        $akun = unserialize($akun);
+        $product = $product->with('seller')->get();
+    
+        return view('buyer/products', [
+            'title' => 'Pembeli: Semua Mitra dan Produk',
+            'style' => '/styles/buyer/products.css',
+            'account' => $akun,
+            'products' => $product,
+            'bestSeller' => $product->find(2)
         ]);
+        }
     }
 
     /**
@@ -43,7 +54,7 @@ class ProductController extends Controller
     {
         return view('/buyer/detail_product', [
             'title' => 'Detail Produk',
-            'style' => '/styles/user/detail_product.css',
+            'style' => '/styles/buyer/detail_product.css',
             'products' => $product->all()
         ]);
     }
@@ -51,9 +62,17 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit(Request $request, Product $product)
     {
-        return view('/buyer/cart');
+        $akun = $request->cookie('account');
+        $product = $product->with('seller')->get();
+
+        return view('buyer/products', [
+            'title' => 'Pembeli: Keranjang',
+            'style' => '/styles/buyer/cart.css',
+            'account' => $akun,
+            'products' => $product,
+        ]);
     }
 
     /**

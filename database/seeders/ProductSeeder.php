@@ -37,7 +37,7 @@ class ProductSeeder extends Seeder
         ]);
         DB::table('products')->insert([
             'name' => 'Es Teh Jumbo',
-            'price' => 5.000,
+            'price' => 5000,
             'category' => 2,
             'seller_id' => $seller[3]->id,
             'created_at' => $timestamps,
@@ -45,7 +45,7 @@ class ProductSeeder extends Seeder
         ]);
         DB::table('products')->insert([
             'name' => 'Es Teh',
-            'price' => 3.000,
+            'price' => 3000,
             'category' => 2,
             'seller_id' => $seller[3]->id,
             'created_at' => $timestamps,

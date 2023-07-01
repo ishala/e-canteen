@@ -13,7 +13,10 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        return view('/buyer/payment', [
+            'title' => 'Pembayaran',
+            'style' => '/styles/user/payment.css'
+        ]);
     }
 
     /**

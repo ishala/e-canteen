@@ -21,6 +21,8 @@ class SellerSeeder extends Seeder
             'password' => 'aminb3rk4h',
             'role' => 2,
             'name' => 'Bakso Berkah Pak Budi',
+            'owner' => 'Budi Amin',
+            'phone' => '081234322345',
             'rent' => 5,
             'created_at' => $timestamps,
             'updated_at' => $timestamps
@@ -29,7 +31,9 @@ class SellerSeeder extends Seeder
             'email' => 'ajisoko@gmail.com',
             'password' => 'a4jj11',
             'role' => 2,
-            'name' => 'Bakso Berkah Pak Budi',
+            'name' => 'Nasi Goreng dan Mie',
+            'owner' => 'Aji Soko',
+            'phone' => '081232344342',
             'rent' => 5,
             'created_at' => $timestamps,
             'updated_at' => $timestamps
@@ -38,7 +42,9 @@ class SellerSeeder extends Seeder
             'email' => 'diana77@gmail.com',
             'password' => 'di4na77',
             'role' => 2,
-            'name' => 'Warung Nasi Goreng',
+            'name' => 'Warung Bu Diana',
+            'owner' => 'Diana Rahma',
+            'phone' => '085565647382',
             'rent' => 4,
             'created_at' => $timestamps,
             'updated_at' => $timestamps
@@ -48,6 +54,8 @@ class SellerSeeder extends Seeder
             'password' => 'yana123',
             'role' => 2,
             'name' => 'Salad Buah Yummy',
+            'owner' => 'Mari Yuana',
+            'phone' => '087667837352',
             'rent' => 3,
             'created_at' => $timestamps,
             'updated_at' => $timestamps

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('password')->PASSWORD_BCRYPT;
             $table->text('picture')->nullable();
             $table->string('name');
+            $table->string('owner');
+            $table->string('phone');
             $table->integer('role');
             $table->integer('rent')->nullable();
             $table->timestamps();

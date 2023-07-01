@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         return view('/registration/login');
     }
@@ -22,28 +22,57 @@ class LoginController extends Controller
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
+        ], [
+            'email' => 'Email is still empty, please fill it',
+            'password' => 'Password is still empty, please fill it'
         ]);
 
         $tabels = ['admins', 'sellers', 'buyers'];
 
         foreach ($tabels as $tabel) {
             $account = DB::table($tabel)
-            ->select('email', 'password')
-            ->where('email', $credentials['email'])
-            ->where('password', $credentials['password'])
-            ->first();
+                ->select('*')
+                ->where('email', $credentials['email'])
+                ->where('password', $credentials['password'])
+                ->first();
 
             if (!empty($account)) {
                 break;
             }
         }
-        
-        if ($account) {
-            $request->session()->regenerate();
-            return redirect()->intended('/products');
-        } else {
 
+        //Kalo akunnya admin
+        if ($account->role == 1) {
+            $account = serialize($account);
+            return redirect()->route('admin')->cookie('account', $account, 60);
+        }
+        //Kalo akunnya seller
+        else if ($account->role == 2) {
+            $account = serialize($account);
+            return redirect()->route('seller')->cookie('account', $account, 60);;
+        }
+        //kalo akunnya buyer
+        else if ($account->role == 3) {
+            $account = serialize($account);
+            return redirect()->route('buyer')->cookie('account', $account, 60);;
+        } else {
             return back()->with('loginError', 'Failed');
         }
+    }
+
+    public function forgotPw()
+    {
+        return view('/registration/forgot_pw_enEmail', [
+            'title' => 'Lupa Password',
+            'style' => '/styles/registration/forgot_pw_enEmail.css'
+        ]);
+    }
+
+    public function forgotPwNext()
+    {
+        return view('/registration/forgot_pw_enPass', [
+            'title' => 'Lupa Password',
+            'style' => '/styles/registration/forgot_pw_enPass.css'
+        ]);
     }
 }
