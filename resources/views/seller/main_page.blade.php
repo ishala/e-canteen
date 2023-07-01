@@ -28,11 +28,11 @@
                 <ul class="navbar-nav">
                     <li class="nav-item mb-2">
                         <a class="nav-link fs-4 {{ $title == 'Dashboard Mitra' ? 'text-danger fw-bold' : 'text-dark' }}"
-                            aria-current="page" href="{{ route('buyer') }}">Menu Utama</a>
+                            aria-current="page" href="#">Menu Utama</a>
                     </li>
                     <li class="nav-item ms-4">
                         <a class="nav-link fs-4 {{ $title == 'Keranjang' ? 'text-danger fw-bold' : 'text-dark' }}"
-                            href="{{ route('buyer.cart') }}">Keranjang</a>
+                            href="#">Keranjang</a>
                     </li>
                     <li class="nav-item ms-4">
                         <a class="nav-link fs-4 text-dark" href="#">Feedback</a>

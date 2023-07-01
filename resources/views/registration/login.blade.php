@@ -10,8 +10,8 @@
 </head>
 
 <body>
-    <h1 class="text-center fw-bold">E-Canteen</h1>
-    <div class="container-fluid d-flex justify-content-center mt-5">
+    <img src="/assets/logo-e-canteen.png" alt="" class="logo">
+    <div class="container-fluid d-flex justify-content-center">
         <form method="POST" action="/login">
             @csrf
             <div class="inputan d-flex flex-row bg-white mb-3 border border-dark p-2">

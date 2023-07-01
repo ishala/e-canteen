@@ -18,6 +18,7 @@
 
 
 <body>
+    <img src="/assets/mini-logo.png" class="logo" alt="">
     <div class="container bg-white mt-5 pt-2 w-75 shadow ">
         <h1 class="judul mt-4">What you want to be ?</h1>
 
@@ -31,7 +32,7 @@
                     <input type="radio" name="role" value="2" id="seller" style="display: none;">
                     <div class="col">
                         <div class="card d-flex flex-column shadow" id="seller" data-role="2">
-                            <img src="/assets/logo profile.png" height="100px" width="100px">
+                            <img src="/assets/buyer-icon.png" height="100px" width="100px">
                             <div class="card-body">
                                 <h5 class="card-title">Seller</h5>
                             </div>
@@ -42,7 +43,7 @@
                     <input type="radio" name="role" value="3" id="buyer" style="display: none;">
                     <div class="col">
                         <div class="card d-flex flex-column shadow" id="buyer" data-role="3">
-                            <img src="/assets/logo profile.png" height="100px" width="100px">
+                            <img src="/assets/buyer-icon.png" height="100px" width="100px">
                             <div class="card-body">
                                 <h5 class="card-title">Buyer</h5>
                             </div>

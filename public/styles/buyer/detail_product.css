@@ -28,6 +28,11 @@ button{
     padding-top: 10px;
 }
 
+.logo{
+    width: 150px;
+    height: 100px;
+}
+
 .keranjang{
     background-color: #14A033;
     color: white;

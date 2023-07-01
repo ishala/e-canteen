@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway&display=swap');
-@import url(color.css);
+
 
 * {
     font-family: 'Poppins', sans-serif;
@@ -21,8 +21,14 @@ body {
 
 form {
     width: 40%;
+    margin-top: 70px;
 }
 
+.logo {
+    width: 350px;
+    margin-top: 50px;
+    margin-left: 500px;
+}
 .email {
     height: 30px;
     padding: 3px;

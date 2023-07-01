@@ -23,6 +23,7 @@
 </head>
 
 <body>
+    <img src="/assets/mini-logo.png" class="logo" alt="">
     <div class="container bg-white mt-5  shadow">
         <div class="navbar d-flex flex-row">
             <div class="ikon  ">

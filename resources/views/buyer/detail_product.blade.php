@@ -11,31 +11,32 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid px-4 mt-2">
-            <a class="navbar-brand text-dark fw-bold fs-2" href="#">E-Canteen</a>
+    <nav class="navbar navbar-expand-lg bg-light d-flex flex-row mb-3">
+        <div class="col-2 mt-2 ms-2">
+            <img src="/assets/logo-e-canteen.png" alt="" class="navbar-brand logo">
+        </div>
+        <div class="container-fluid mt-2 col-10">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse ms-4" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" aria-current="page" href="#">Dashboard</a>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link fs-4 {{ $title == 'Pembeli: Semua Mitra dan Produk' ? 'text-danger fw-bold' : 'text-dark' }}"
+                            aria-current="page" href="{{ route('buyer') }}">Menu Utama</a>
                     </li>
                     <li class="nav-item ms-4">
-                        <a class="nav-link text-dark" href="#">Discount</a>
+                        <a class="nav-link fs-4 {{ $title == 'Pembeli: Keranjang' ? 'text-danger fw-bold' : 'text-dark' }}"
+                            href="{{ route('buyer.cart') }}">Keranjang</a>
                     </li>
                     <li class="nav-item ms-4">
-                        <a class="nav-link text-dark" href="#">Feedback</a>
+                        <a class="nav-link fs-4 text-dark" href="#">Semua Produk</a>
                     </li>
                     <li class="nav-item ms-4">
-                        <a class="nav-link text-dark" href="#">Contact</a>
+                        <a class="nav-link fs-4 text-dark" href="#">Contact</a>
                     </li>
                 </ul>
-            </div>
-            <div class="container pesanan bg-white d-flex justify-content-end">
-                <p>Daftar Pesanan</p>
             </div>
         </div>
     </nav>

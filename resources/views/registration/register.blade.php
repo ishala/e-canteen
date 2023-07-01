@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <h1 class="fw-bold fs-2 mt-3 ms-3">E-Canteen</h1>
+    <img src="/assets/mini-logo.png" class="logo" alt="">
     <div class="isian container d-flex justify-content-center bg-light">
         <!--FORM-->
         <form method="POST" action="/register/role">

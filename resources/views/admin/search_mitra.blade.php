@@ -10,41 +10,12 @@
 </head>
 
 <body>
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand d-flex flex-row-reverse" style="background-color: #ebffec; height: 70px">
-        <div class="container-fluid">
-            <img src="/assets/logo-e-canteen.png" alt="Logo" style="width: 130px; height: auto" />
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto"></ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Discount</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Feedback</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <a href="#">
-                    <img src="/assets/logo-profile.png" alt="Profile Picture"
-                        style="width: 45px; height: 45px; border-radius: 50px" /></a>
-            </div>
-        </div>
-    </nav>
-
+    <div class="container-fluid atas d-flex flex-row justify-content-between bg-light">
+        <img src="/assets/logo-e-canteen.png" alt="" class="logo">
+        <p class="me-4 mt-3 fs-3">Admin</p>
+    </div>
     <div class="container">
-        <div class="row justify-content-center mt-5">
+        <div class="row justify-content-center">
             <div class="col-md-6">
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />

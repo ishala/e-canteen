@@ -53,7 +53,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         return view('/buyer/detail_product', [
-            'title' => 'Detail Produk',
+            'title' => 'Pembeli: Detail Produk',
             'style' => '/styles/buyer/detail_product.css',
             'products' => $product->all()
         ]);
