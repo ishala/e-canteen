@@ -8,13 +8,16 @@
 }
 
 .navbar-brand{
-    height: 150px;
     width: 200px;
-
+    height: 230px;
 }
 
 .navbar{
     background-color: #EBFFEC;
     max-height: 150px;
     overflow: hidden;
+}
+
+.nav-link{
+    font-size: 25px;
 }

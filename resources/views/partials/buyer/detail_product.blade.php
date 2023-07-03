@@ -11,36 +11,6 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-light d-flex flex-row mb-3">
-        <div class="col-2 mt-2 ms-2">
-            <img src="/assets/logo-e-canteen.png" alt="" class="navbar-brand logo">
-        </div>
-        <div class="container-fluid mt-2 col-10">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item mb-2">
-                        <a class="nav-link fs-4 {{ $title == 'Pembeli: Semua Mitra dan Produk' ? 'text-danger fw-bold' : 'text-dark' }}"
-                            aria-current="page" href="{{ route('buyer') }}">Menu Utama</a>
-                    </li>
-                    <li class="nav-item ms-4">
-                        <a class="nav-link fs-4 {{ $title == 'Pembeli: Keranjang' ? 'text-danger fw-bold' : 'text-dark' }}"
-                            href="{{ route('buyer.cart') }}">Keranjang</a>
-                    </li>
-                    <li class="nav-item ms-4">
-                        <a class="nav-link fs-4 text-dark" href="#">Semua Produk</a>
-                    </li>
-                    <li class="nav-item ms-4">
-                        <a class="nav-link fs-4 text-dark" href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
     <p class="text-center fw-bold fs-2 mt-4">Pesan Produk</p>
 
     <div class="container d-flex flex-row mt-5">
@@ -50,9 +20,18 @@
         <div class="col-7 d-flex flex-column">
             <div class="d-flex flex-row">
                 <div class="col-6 d-flex flex-column">
-                    <h3>Nasi Goreng Ishal Enak</h3>
-                    <p class="fw-light text-secondary fs-5">Makanan</p>
-                    <p class="fw-bold fs-5">Rp. 15.000</p>
+                    <h3>{{ $product->name }}</h3>
+                    @if ($product->category == 1)
+                        <p class="fw-light text-secondary fs-5">Makanan</p>
+                    @endif
+                    @if ($product->category == 2)
+                        <p class="fw-light text-secondary fs-5">Minuman</p>
+                    @endif
+                    @if ($product->category == 3)
+                        <p class="fw-light text-secondary fs-5">Topping</p>
+                    @endif
+                    <p class="fw-bold fs-5">Rp.
+                        {{ number_format($product->price, 0, ',', '.') }}</p>
                 </div>
                 <div class="col-6">
                     <img src="/assets/favorite_icon.png" class="favorite" alt="">
@@ -71,10 +50,8 @@
 
     <div class="container d-flex flex-row justify-content-end">
         <button type="submit" class="mt-4 fw-bold keranjang" name="pesan" value="pesan">
-            <p>Keranjang</p>
-        </button>
-        <button type="submit" class="mt-4 ms-5 fw-bold tambah" name="pesan" value="pesan">
-            <p>Tambahkan</p>
+            <a class="nav-link {{ $title == 'Pembeli: Keranjang' ? 'text-danger fw-bold' : 'text-dark' }} text-center"
+                aria-current="page" href="{{ route('buyer.cart') }}">Add Cart</a>
         </button>
     </div>
     </div>

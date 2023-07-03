@@ -62,9 +62,9 @@ Route::post('/seller/all-products', [SellerController::class, 'show'])->name('se
 
 //Buyer
 Route::get('/payment', [TransactionController::class, 'index'])->name('buyer.payment');
-
-//Product
+Route::get('/buyer/order/{product:id}', [ProductController::class, 'show'])->name('buyer.detail-product');
 Route::get('/buyer', [ProductController::class, 'index'])->name('buyer');//need revisi teks navbar, besar logo
-Route::post('/buyer', [ProductController::class, 'index'])->name('buyer');
 Route::get('/buyer/product', [ProductController::class, 'show'])->name('buyer.all-products');//need revisi fungsional
 Route::get('/buyer/cart', [ProductController::class, 'edit'])->name('buyer.cart'); //need revisi fungsional
+
+Route::post('/buyer', [ProductController::class, 'index'])->name('buyer');

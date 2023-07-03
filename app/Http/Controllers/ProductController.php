@@ -14,48 +14,62 @@ class ProductController extends Controller
      */
     public function index(Request $request, Product $product)
     {
-        if($request->cookie() != null){
-        //Ngambil data dari session dengan nama key = akun
-        $akun = $request->cookie('account');
+        if ($request->cookie() != null) {
+            //Ngambil data dari session dengan nama key = akun
+            $akun = $request->cookie('account');
 
-        $akun = unserialize($akun);
-        $product = $product->with('seller')->get();
-    
-        return view('buyer/products', [
-            'title' => 'Pembeli: Semua Mitra dan Produk',
-            'style' => '/styles/buyer/products.css',
-            'account' => $akun,
-            'products' => $product,
-            'bestSeller' => $product->find(2)
-        ]);
+            $akun = unserialize($akun);
+
+            $bestSeller = $product->find(2);
+            $kategori = $request->input('category');
+
+            if ($kategori == 0) {
+                $product = $product->all();
+            } else {
+                $product = $product->where('category', $kategori)
+                    ->get();
+            }
+
+            $totalProduk = $product->where('seller_id', $akun->id)
+                ->where('category', $kategori)
+                ->count();
+
+            return view('buyer/products', [
+                'title' => 'Pembeli: Menu Utama',
+                'style' => '/styles/buyer/products.css',
+                'products' => $product,
+                'category' => $kategori,
+                'count' => $totalProduk,
+                'bestSeller' => $bestSeller
+            ]);
         }
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(Request $request, Product $product)
     {
-        return view('/buyer/detail_product', [
+        //Ngambil data dari session dengan nama key = akun
+        $akun = $request->cookie('account');
+        $akun = unserialize($akun);
+        return view('/buyer/products', [
             'title' => 'Pembeli: Detail Produk',
-            'style' => '/styles/buyer/detail_product.css',
-            'products' => $product->all()
+            'style' => '/styles/buyer/products.css',
+            'product' => $product
         ]);
     }
 

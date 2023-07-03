@@ -17,7 +17,7 @@
 
             $('input[name="sellerChecked[]"]').change(function() {
                 totalDelete = $('input[name="sellerChecked[]"]:checked')
-                .length; // Hitung jumlah checkbox yang terceklis
+                    .length; // Hitung jumlah checkbox yang terceklis
                 $('#delText').text(totalDelete);
             });
 
