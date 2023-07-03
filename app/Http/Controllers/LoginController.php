@@ -49,7 +49,7 @@ class LoginController extends Controller
         //Kalo akunnya seller
         else if ($account->role == 2) {
             $account = serialize($account);
-            return redirect()->route('seller')->cookie('account', $account, 60);;
+            return redirect()->route('seller')->cookie('account', $account, 60, '/seller');;
         }
         //kalo akunnya buyer
         else if ($account->role == 3) {

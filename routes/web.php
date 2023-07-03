@@ -54,14 +54,17 @@ Route::post('/admin', [AdminController::class, 'destroy'])->name('admin.delete-m
 
 //Seller
 Route::get('/seller', [SellerController::class, 'index'])->name('seller');//need revisi tampilan navbar, logo di navbar, nyambungin di tiap navbar ke halaman2 seller
-Route::get('/seller/add-product', [SellerController::class, 'create']);//need revisi tampilan navbar, logo di navbar, nyambungin di tiap navbar ke halaman2 seller
-Route::get('/seller/edit-product', [SellerController::class, 'edit']);//need revisi tampilan navbar, nyambungin di tiap navbar ke halaman2 seller
-Route::get('/seller/revenue', [SellerController::class, 'getRevenue']);//need revisi database
+Route::get('/seller/all-products/add-product', [SellerController::class, 'create'])->name('seller.add-product');//need revisi tampilan navbar, logo di navbar, nyambungin di tiap navbar ke halaman2 seller
+Route::get('/seller/edit-product', [SellerController::class, 'edit'])->name('seller.edit-product');//need revisi tampilan navbar, nyambungin di tiap navbar ke halaman2 seller
+Route::get('/seller/revenue', [SellerController::class, 'getRevenue'])->name('seller.revenue');//need revisi database
+Route::get('/seller/all-products', [SellerController::class, 'show'])->name('seller.all-products');
+Route::post('/seller/all-products', [SellerController::class, 'show'])->name('seller.all-products');
 
 //Buyer
 Route::get('/payment', [TransactionController::class, 'index'])->name('buyer.payment');
 
 //Product
-Route::get('/buyer', [ProductController::class, 'index'])->name('buyer');//need revisi besar teks navbar, besar logo
-Route::get('/buyer/product', [ProductController::class, 'show']);//need revisi fungsional
+Route::get('/buyer', [ProductController::class, 'index'])->name('buyer');//need revisi teks navbar, besar logo
+Route::post('/buyer', [ProductController::class, 'index'])->name('buyer');
+Route::get('/buyer/product', [ProductController::class, 'show'])->name('buyer.all-products');//need revisi fungsional
 Route::get('/buyer/cart', [ProductController::class, 'edit'])->name('buyer.cart'); //need revisi fungsional

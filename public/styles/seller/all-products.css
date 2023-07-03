@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway&display=swap');
+
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+.navbar {
+    width: 80%;
+}
+.navbar-brand {
+    width: 200px;
+}
+
+.tambah {
+    width: 500px;
+    background-color: #C7E8CA;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    border-radius: 30px;
+}
+
+.tambah p {
+    font-size: 20px;
+    color: black;
+}
+
+.filter {
+    width: 20%;
+    margin-left: 320px;
+    margin-top: 30px;
+}
+
+.filter button {
+    width: 150px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: white;
+    border: 1px solid #DF2E38;
+    padding-top: 3px;
+}
+
+.filter button {
+    margin-top: 7px;
+    color: #DF2E38;
+}
+
+.wrapper {
+    width: 70%;
+    height: 270px;
+    margin-left: 500px;
+}
+
+.card {
+    width: 250px;
+}
+.kategori {
+    background-color: white;
+    color: #DF2E38;
+}
+
+.kategori.default {
+    background-color: #DF2E38;
+    color: white;
+}

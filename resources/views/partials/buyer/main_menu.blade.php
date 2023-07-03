@@ -14,22 +14,22 @@
 
 <div class="filter container d-flex flex-row">
     <div class="col-3">
-        <button type="submit" class="text-white mt-4" name="pesan" value="pesan">
+        <button type="submit" class="text-white mt-4" name="pesan">
             <p>Semua</p>
         </button>
     </div>
     <div class="col-3">
-        <button type="submit" class="text-white mt-4" name="pesan" value="pesan">
+        <button type="submit" class="text-white mt-4" name="pesan">
             <p>Makanan</p>
         </button>
     </div>
     <div class="col-3">
-        <button type="submit" class="text-white mt-4" name="pesan" value="pesan">
+        <button type="submit" class="text-white mt-4" name="pesan">
             <p>Minuman</p>
         </button>
     </div>
     <div class="col-3">
-        <button type="submit" class="text-white mt-4" name="pesan" value="pesan">
+        <button type="submit" class="text-white mt-4" name="pesan">
             <p>Topping</p>
         </button>
     </div>

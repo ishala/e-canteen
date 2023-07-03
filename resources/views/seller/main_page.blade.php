@@ -4,19 +4,66 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
     <title>{{ $title }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="/styles/seller/main-page.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            let category = $('#dataCategory').data('value'); 
+            let prevCat = -1;
+
+            if(category == 0){
+                $('.kategori').eq(0).addClass('default');
+            }
+            $('.kategori[data-category="'+ category + '"]').addClass('default');
+            prevCat = 0;
+
+
+            $('.kategori').click(function() {
+                let category = $(this).data('category');
+                if (prevCat !== category) {
+                    $('.kategori[data-category="' + prevCat + '"]').removeClass('default');
+                }
+                $(this).addClass('default');
+                prevCat = category;
+
+                if (prevCat !== 0) {
+                    $('.kategori').eq(0).removeClass('default');
+                }
+            });
+
+            $('.kategori-form').submit(function(e) {
+                e.preventDefault();
+                let form = $(this);
+                let action = form.attr('action');
+                // Membuat elemen input tersembunyi dengan nilai kategori yang dipilih
+                let inputCategory = $('<input>')
+                    .attr('type', 'hidden')
+                    .attr('name', 'category')
+                    .val();
+                // Menggabungkan elemen input dengan form
+                form.append(inputCategory);
+                // Mengirimkan form
+                form.unbind('submit').submit();
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="{{ $style }}">
 </head>
 
 
-<body>
-    <div class="container">
 
-    </div>
+
+<body>
     <nav class="navbar navbar-expand-lg bg-light d-flex flex-row">
-        <div class="col-2 mt-5 ms-2">
+        <div class="col-2 mt-2 ms-2">
             <img src="/assets/logo-e-canteen.png" alt="" class="navbar-brand">
         </div>
         <div class="container-fluid mt-2 col-10">
@@ -28,14 +75,14 @@
                 <ul class="navbar-nav">
                     <li class="nav-item mb-2">
                         <a class="nav-link fs-4 {{ $title == 'Dashboard Mitra' ? 'text-danger fw-bold' : 'text-dark' }}"
-                            aria-current="page" href="#">Menu Utama</a>
+                            aria-current="page" href="{{ route('seller') }}">Dashboard</a>
                     </li>
                     <li class="nav-item ms-4">
-                        <a class="nav-link fs-4 {{ $title == 'Keranjang' ? 'text-danger fw-bold' : 'text-dark' }}"
-                            href="#">Keranjang</a>
+                        <a class="nav-link fs-4 {{ $title == 'Penjual: Tampil Produk' ? 'text-danger fw-bold' : 'text-dark' }}"
+                            href="{{ route('seller.all-products') }}">Semua Produk</a>
                     </li>
                     <li class="nav-item ms-4">
-                        <a class="nav-link fs-4 text-dark" href="#">Feedback</a>
+                        <a class="nav-link fs-4 text-dark" href="#">Pendapatan</a>
                     </li>
                     <li class="nav-item ms-4">
                         <a class="nav-link fs-4 text-dark" href="#">Contact</a>
@@ -45,40 +92,14 @@
         </div>
     </nav>
 
-    <p class="fs-3 fw-bold mt-4 ms-5">Selamat Datang, {{ $account->name }}!</p>
-    <div class="container-fluid px-5 mt-5">
-        <div class="row d-flex justify-content-around">
-            <div class="container data-penjualan col">
-                <p class="fs-4 text-center mt-5">Total Earnings</p>
-                <p class="fs-2 fw-bold text-center">Rp. 3.242.144</p>
-
-            </div>
-            <div class="container data-penjualan col">
-                <p class="fs-4 text-center mt-5">Total Users</p>
-                <p class="fs-2 fw-bold text-center">24</p>
-            </div>
-            <div class="container data-penjualan col">
-                <p class="fs-4 text-center mt-5">Total Products</p>
-                <p class="fs-2 fw-bold text-center">{{ $totalProducts }}</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrapper d-flex mt-5 justify-content-center">
-        @foreach ($products as $product)
-            <div class="card ms-2">
-                <img src="/assets/buryam.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title fw-bold">{{ $product['name'] }}</h5>
-                    <p class="card-text">Rp. {{ $product['price'] }}</p>
-                    <div class="d-flex flex-row-reverse">
-                        <a href="#" class="btn btn-light text-danger">Pesan</a>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
+    @if ($title == 'Dashboard Mitra')
+        @include('partials.seller.dashboard')
+    @endif
+    @if ($title == 'Penjual: Tampil Produk')
+        @include('partials.seller.all_products')
+    @endif
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
     </script>
+
 </body>

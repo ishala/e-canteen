@@ -27,6 +27,7 @@ class SellerController extends Controller
 
             return view('seller/main_page', [
                 'title' => 'Dashboard Mitra',
+                'style' => '/styles/seller/main-page.css',
                 'account' => $akun,
                 'products' => $myProduct,
                 'totalProducts' => $totalProduct,
@@ -39,7 +40,10 @@ class SellerController extends Controller
      */
     public function create()
     {
-        return view('seller/add_product');
+        return view('seller/add_product', [
+            'title' => 'Penjual: Tambah Produk',
+            
+        ]);
     }
 
     /**
@@ -53,10 +57,33 @@ class SellerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Seller $seller)
+    public function show(Request $request, Product $product)
     {
-        //
+        $akun = $request->cookie('account');
+        $akun = unserialize($akun);
+        $kategori = $request->input('category');
+
+        if($kategori == 0){
+            $product = $product->where('seller_id', $akun->id)->get();
+        }else {
+            $product = $product->where('seller_id', $akun->id)
+                                ->where('category', $kategori)
+                                ->get();
+        }
+
+        $totalProduk = $product->where('seller_id', $akun->id)
+                                ->where('category', $kategori)
+                                ->count();
+
+        return view('seller/main_page', [
+            'title' => 'Penjual: Tampil Produk',
+            'style' => '/styles/seller/all-products.css',
+            'products' => $product,
+            'category' => $kategori,
+            'count' => $totalProduk
+        ]);
     }
+
 
     /**
      * Show the form for editing the specified resource.

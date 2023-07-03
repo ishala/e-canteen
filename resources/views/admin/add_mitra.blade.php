@@ -53,8 +53,7 @@
                 </div>
                 <div class="input-teks">
                     <label for="input-nama" class="fw-semibold mt-2">Email</label><br>
-                    <input type="email" id="email" name="email" class="p-2" 
-                        placeholder="Masukkan email...">
+                    <input type="email" id="email" name="email" class="p-2" placeholder="Masukkan email...">
                 </div>
                 <div class="input-teks">
                     <label for="input-nama" class="fw-semibold mt-2">Password</label><br>
