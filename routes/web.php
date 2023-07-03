@@ -54,11 +54,15 @@ Route::post('/admin', [AdminController::class, 'destroy'])->name('admin.delete-m
 
 //Seller
 Route::get('/seller', [SellerController::class, 'index'])->name('seller');//need revisi tampilan navbar, logo di navbar, nyambungin di tiap navbar ke halaman2 seller
-Route::get('/seller/all-products/add-product', [SellerController::class, 'create'])->name('seller.add-product');//need revisi tampilan navbar, logo di navbar, nyambungin di tiap navbar ke halaman2 seller
-Route::get('/seller/edit-product', [SellerController::class, 'edit'])->name('seller.edit-product');//need revisi tampilan navbar, nyambungin di tiap navbar ke halaman2 seller
-Route::get('/seller/revenue', [SellerController::class, 'getRevenue'])->name('seller.revenue');//need revisi database
 Route::get('/seller/all-products', [SellerController::class, 'show'])->name('seller.all-products');
+Route::get('/seller/all-products/add-product', [SellerController::class, 'create'])->name('seller.add-product');//need revisi tampilan navbar, logo di navbar, nyambungin di tiap navbar ke halaman2 seller
+Route::get('/seller/all-products/{product:id}/edit-product', [SellerController::class, 'edit'])->name('seller.edit-product');//need revisi tampilan navbar, nyambungin di tiap navbar ke halaman2 seller
+Route::get('/seller/revenue', [SellerController::class, 'getRevenue'])->name('seller.revenue');//need revisi database
+
 Route::post('/seller/all-products', [SellerController::class, 'show'])->name('seller.all-products');
+Route::post('/seller/all-products/add-product', [SellerController::class, 'store'])->name('seller.add-product');
+Route::post('/seller/all-products/{product:id}/edit-product', [SellerController::class, 'update'])->name('seller.update-product');
+Route::post('/seller/all-products/{product:id}/delete-product', [SellerController::class, 'destroy'])->name('seller.delete-product');
 
 //Buyer
 Route::get('/payment', [TransactionController::class, 'index'])->name('buyer.payment');

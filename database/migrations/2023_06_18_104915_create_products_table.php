@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('price');
             $table->text('picture')->nullable();
+            $table->text('description')->nullable();
             $table->integer('category');
             $table->foreignId('seller_id');
             $table->foreign('seller_id')->references('id')->on('sellers')

@@ -16,13 +16,13 @@
 
     <script>
         $(document).ready(function() {
-            let category = $('#dataCategory').data('value'); 
+            let category = $('#dataCategory').data('value');
             let prevCat = -1;
 
-            if(category == 0){
+            if (category == 0) {
                 $('.kategori').eq(0).addClass('default');
             }
-            $('.kategori[data-category="'+ category + '"]').addClass('default');
+            $('.kategori[data-category="' + category + '"]').addClass('default');
             prevCat = 0;
 
 
@@ -66,7 +66,7 @@
         <div class="col-2 mt-2 ms-2">
             <img src="/assets/logo-e-canteen.png" alt="" class="navbar-brand">
         </div>
-        <div class="container-fluid mt-2 col-10">
+        <div class="container-fluid mt-2 col-10 navigasi">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -78,8 +78,10 @@
                             aria-current="page" href="{{ route('seller') }}">Dashboard</a>
                     </li>
                     <li class="nav-item ms-4">
-                        <a class="nav-link fs-4 {{ $title == 'Penjual: Tampil Produk' ? 'text-danger fw-bold' : 'text-dark' }}"
-                            href="{{ route('seller.all-products') }}">Semua Produk</a>
+                        <a @if ($title == 'Penjual: Tampil Produk') class="nav-link fs-4 text-danger fw-bold" @endif
+                            @if ($title == 'Penjual: Tambah Produk') class="nav-link fs-4 text-danger fw-bold" @endif
+                            @if ($title == 'Penjual: Edit Produk') class="nav-link fs-4 text-danger fw-bold" @endif
+                            class="nav-link fs-4" href="{{ route('seller.all-products') }}">Semua Produk</a>
                     </li>
                     <li class="nav-item ms-4">
                         <a class="nav-link fs-4 text-dark" href="#">Pendapatan</a>
@@ -98,8 +100,15 @@
     @if ($title == 'Penjual: Tampil Produk')
         @include('partials.seller.all_products')
     @endif
+    @if ($title == 'Penjual: Tambah Produk')
+        @include('partials.seller.add_product')
+    @endif
+    @if ($title == 'Penjual: Edit Produk')
+        @include('partials.seller.edit_product')
+    @endif
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
     </script>
 
 </body>
+

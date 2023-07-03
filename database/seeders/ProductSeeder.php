@@ -23,6 +23,7 @@ class ProductSeeder extends Seeder
             'price' => 15000,
             'category' => 1,
             'seller_id' => $seller[0]->id,
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, corporis molestiae iusto ipsum consequatur perspiciatis vel dolorum quia deleniti quos?',
             'created_at' => $timestamps,
             'updated_at' => $timestamps
         ]);
@@ -31,6 +32,7 @@ class ProductSeeder extends Seeder
             'name' => 'Sate Madura',
             'price' => 15000,
             'category' => 1,
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, harum?',
             'seller_id' => $seller[3]->id,
             'created_at' => $timestamps,
             'updated_at' => $timestamps
@@ -39,6 +41,7 @@ class ProductSeeder extends Seeder
             'name' => 'Es Teh Jumbo',
             'price' => 5000,
             'category' => 2,
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, harum?',
             'seller_id' => $seller[3]->id,
             'created_at' => $timestamps,
             'updated_at' => $timestamps
@@ -47,6 +50,7 @@ class ProductSeeder extends Seeder
             'name' => 'Es Teh',
             'price' => 3000,
             'category' => 2,
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, harum?',
             'seller_id' => $seller[3]->id,
             'created_at' => $timestamps,
             'updated_at' => $timestamps
@@ -55,6 +59,7 @@ class ProductSeeder extends Seeder
             'name' => 'Nasi Goreng Sosis',
             'price' => 16000,
             'category' => 1,
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, harum?',
             'seller_id' => $seller[1]->id,
             'created_at' => $timestamps,
             'updated_at' => $timestamps
@@ -64,6 +69,7 @@ class ProductSeeder extends Seeder
             'name' => 'Nasi Goreng Bakso',
             'price' => 16000,
             'category' => 1,
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, harum?',
             'seller_id' => $seller[1]->id,
             'created_at' => $timestamps,
             'updated_at' => $timestamps
@@ -72,6 +78,7 @@ class ProductSeeder extends Seeder
             'name' => 'Nasi Goreng Spesial',
             'price' => 20000,
             'category' => 1,
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, harum?',
             'seller_id' => $seller[1]->id,
             'created_at' => $timestamps,
             'updated_at' => $timestamps
@@ -80,6 +87,7 @@ class ProductSeeder extends Seeder
             'name' => 'Es Jeruk',
             'price' => 4000,
             'category' => 2,
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, harum?',
             'seller_id' => $seller[3]->id,
             'created_at' => $timestamps,
             'updated_at' => $timestamps
@@ -88,6 +96,7 @@ class ProductSeeder extends Seeder
             'name' => 'Salad Buah',
             'price' => 14000,
             'category' => 1,
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, harum?',
             'seller_id' => $seller[2]->id,
             'created_at' => $timestamps,
             'updated_at' => $timestamps
@@ -96,6 +105,7 @@ class ProductSeeder extends Seeder
             'name' => 'Salad Buah Spesial',
             'price' => 18000,
             'category' => 1,
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, harum?',
             'seller_id' => $seller[2]->id,
             'created_at' => $timestamps,
             'updated_at' => $timestamps

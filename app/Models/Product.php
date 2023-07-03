@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['$id', 'id_seller'];
+    protected $guarded = ['$id'];
 
     public function buyer(){
         return $this->hasMany(Buyer::class);

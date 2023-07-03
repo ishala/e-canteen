@@ -44,7 +44,7 @@ class LoginController extends Controller
         //Kalo akunnya admin
         if ($account->role == 1) {
             $account = serialize($account);
-            return redirect()->route('admin')->cookie('account', $account, 60);
+            return redirect()->route('admin')->cookie('account', $account, 60, '/admin');
         }
         //Kalo akunnya seller
         else if ($account->role == 2) {
@@ -54,7 +54,7 @@ class LoginController extends Controller
         //kalo akunnya buyer
         else if ($account->role == 3) {
             $account = serialize($account);
-            return redirect()->route('buyer')->cookie('account', $account, 60);;
+            return redirect()->route('buyer')->cookie('account', $account, 60, '/buyer');;
         } else {
             return back()->with('loginError', 'Failed');
         }

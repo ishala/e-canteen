@@ -40,18 +40,31 @@ class SellerController extends Controller
      */
     public function create()
     {
-        return view('seller/add_product', [
+        return view('seller/main_page', [
             'title' => 'Penjual: Tambah Produk',
-            
+            'style' => '/styles/seller/all-products.css'
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSellerRequest $request)
+    public function store(Request $request)
     {
-        //
+        $akun = $request->cookie('account');
+        $akun = unserialize($akun);
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'category' => 'required|max:1',
+            'price' => 'required',
+            'description' => 'required',
+        ]);
+
+        $validatedData['seller_id'] = $akun->id;
+
+
+        Product::create($validatedData);
+        return redirect()->route('seller.all-products');
     }
 
     /**
@@ -63,21 +76,21 @@ class SellerController extends Controller
         $akun = unserialize($akun);
         $kategori = $request->input('category');
 
-        if($kategori == 0){
+        if ($kategori == 0) {
             $product = $product->where('seller_id', $akun->id)->get();
-        }else {
+        } else {
             $product = $product->where('seller_id', $akun->id)
-                                ->where('category', $kategori)
-                                ->get();
+                ->where('category', $kategori)
+                ->get();
         }
 
         $totalProduk = $product->where('seller_id', $akun->id)
-                                ->where('category', $kategori)
-                                ->count();
+            ->where('category', $kategori)
+            ->count();
 
         return view('seller/main_page', [
             'title' => 'Penjual: Tampil Produk',
-            'style' => '/styles/seller/all-products.css',
+            'style' => '/styles/seller/main-page.css',
             'products' => $product,
             'category' => $kategori,
             'count' => $totalProduk
@@ -88,25 +101,46 @@ class SellerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Seller $seller)
+    public function edit(Seller $seller, Product $product)
     {
-        return view('seller/edit_product');
+        return view('seller/main_page', [
+            'title' => 'Penjual: Edit Produk',
+            'style' => '/styles/seller/main-page.css',
+            'product' => $product
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSellerRequest $request, Seller $seller)
+    public function update(Request $request, Product $product)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'category' => 'required|max:1',
+            'price' => 'required',
+            'description' => 'required',
+        ]);
+
+        $validatedData['price'] = str_replace(['.', ','], '', $validatedData['price']);
+
+        $product->where('id', $product->id)->update($validatedData);
+        return redirect()->route('seller.all-products');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Seller $seller)
+    public function destroy(Request $request, Product $product)
     {
-        //
+        $productId = $request->input('id');
+
+        $product = $product->find($productId); // Temukan produk berdasarkan ID
+        if ($product) {
+            $product->delete(); // Hapus produk jika ditemukan
+        }
+
+        return redirect()->route('seller.all-products');
     }
 
     public function getRevenue()

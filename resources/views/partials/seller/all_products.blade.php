@@ -1,9 +1,11 @@
 <div id="dataCategory" data-value="{{ $category }}"></div>
 
 <div class="container d-flex justify-content-center">
-    <button type="button" class="tambah mt-4">
-        <p class="mt-3">Tambah Produk</p>
-    </button>
+    <a href="{{ route('seller.add-product') }}">
+        <button type="button" class="tambah mt-4">
+            <p class="mt-3">Tambah Produk</p>
+        </button>
+    </a>
 </div>
 
 <div class="filter container d-flex flex-row">
@@ -51,10 +53,10 @@
             <div class="card ms-2 col-3">
                 <img src="/assets/buryam.png" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title fw-bold">{{ $product['name'] }}</h5>
-                    <p class="card-text">Rp. {{ $product['price'] }}</p>
+                    <h5 class="card-title fw-bold">{{ $product->name }}</h5>
+                    <p class="card-text">Rp. {{ number_format($product->price, 0, ',', '.') }}</p>
                     <div class="d-flex flex-row-reverse mt-4">
-                        <a href="#" class="btn btn-light text-danger">Pesan</a>
+                        <a href="{{ route('seller.edit-product', $product) }}" class="btn btn-light text-danger">Detail</a>
                     </div>
                 </div>
             </div>
@@ -69,16 +71,16 @@
                 <div class="card ms-2">
                     <img src="/assets/buryam.png" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">{{ $product['name'] }}</h5>
-                        <p class="card-text">Rp. {{ $product['price'] }}</p>
+                        <h5 class="card-title fw-bold">{{ $product->name }}</h5>
+                        <p class="card-text">Rp. {{ number_format($product->price, 0, ',', '.') }}</p>
                         <div class="d-flex flex-row-reverse">
-                            <a href="#" class="btn btn-light text-danger">Pesan</a>
+                            <a href="{{ route('seller.edit-product', $product) }}" class="btn btn-light text-danger">Detail</a>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
     @else
-        <p class="text-center fs-3">Gaada Produknya</p>
+        <p class="text-center fs-3 nullProduct">Produk Belum Ditambahkan.</p>
     @endif
 @endif
