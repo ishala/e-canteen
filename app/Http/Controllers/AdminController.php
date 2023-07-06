@@ -125,8 +125,7 @@ class AdminController extends Controller
 
     public function totalRevenue(){
         return view('/admin/total_revenue', [
-            'title' => 'Edit Mitra',
-            'style' => '/styles/admin/revenue.css'
+            'title' => 'Admin: Total Pendapatan',
         ]);
     }
 }

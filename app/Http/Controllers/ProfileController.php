@@ -17,4 +17,17 @@ class ProfileController extends Controller
             'style' => '/styles/profile/edit-profile.css'
         ]);
     }
+
+    public function getLandingPage(){
+        return view('/others/landing_page', [
+            'style' => '/styles/others/landing-page.css'
+        ]);
+    }
+
+    public function getAboutUs(){
+        return view('/others/about', [
+            'title' => 'About E-Canteen',
+            'style' => '/styles/others/about.css'
+        ]);
+    }
 }

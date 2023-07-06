@@ -15,7 +15,7 @@
         $(document).ready(function() {
             $('#save').click(function() {
                 // Ambil referensi ke elemen form
-                var form = $('#seller');
+                let form = $('#seller');
                 // Setel aksi form ke URL yang diinginkan
                 form.attr('action', "{{ route('admin.add-mitra-process') }}");
                 // Kirimkan formulir secara manual

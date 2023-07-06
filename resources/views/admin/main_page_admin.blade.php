@@ -56,7 +56,7 @@
         <div class="container col-7"></div>
         <div class="container col-3 d-flex flex-row justify-content-end">
             <div class="container d-flex btn revenue col-4 me-3">
-                <a href="{{ route('admin.search-mitra') }}" class="d-flex flex-row text-decoration-none">
+                <a href="{{ route('admin.revenue') }}" class="d-flex flex-row text-decoration-none">
                     <img src="/assets/revenue.png" class="mt-1 ms-3" alt="revenue">
                     <p class="mt-1 ms-3 fs-5 fw-medium">Pendapatan</p>
                 </a>

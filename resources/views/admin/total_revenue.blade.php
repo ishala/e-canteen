@@ -1,68 +1,187 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Revenue Total</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ $style }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-        integrity="sha512-zZoKId84lnfnXDP2Bwzoi4oBCC/sUpT0h77bWtQ1r+1j7w5pD8B1hb6TN0qlQmvgunYO66Y4pEtxXcJKL3P26w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>{{ $title }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
 
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .admin {
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ebffec;
+        }
+
+        .search-box {
+            width: 400px;
+            padding: 10px 40px 10px 10px;
+            /* Tambahkan padding untuk memberikan ruang bagi ikon */
+            font-size: 16px;
+            background-image: url("image/search.png");
+            /* Ganti dengan path menuju gambar ikon search */
+            background-repeat: no-repeat;
+            background-position: 10px center;
+            background-size: 20px 20px;
+            /* Sesuaikan ukuran ikon */
+            border: 1px solid #ccc;
+            border-radius: 15px;
+        }
+
+        ::placeholder {
+            padding-left: 35px;
+            /* Tambahkan jarak antara ikon dan placeholder */
+        }
+
+        /* .row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.3);
+      } */
+
+        .row img {
+            width: 200px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-right: 30px;
+        }
+
+        .row .content {
+            flex-grow: 1;
+        }
+
+        .row h3 {
+            margin: 0 0 10px 0;
+        }
+
+        .row h5 {
+            margin: 0 0 2px 0;
+        }
+
+        .row h6 {
+            margin: 0;
+        }
+
+        .row .button {
+            padding: 20px 20px;
+            margin-right: 20px;
+            background-color: 1px solid#ccc;
+            color: red;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="header">
+        <div class="logo">Revenue</div>
+        <div class="admin">Admin</div>
+    </div>
+
+    <div class="container-fluid py-5">
         <div class="row">
-            <div class="col-sm-6">
-                <h3 class="mt-4">Total Mitra</h3>
-                <h4 class="mt-3">15 Mitra</h4>
-            </div>
-            <div class="col-sm-6">
-                <h3 class="mt-4">Total Pendapatan</h3>
-                <h4 class="mt-3 red-text">RP.2.350.000</h4>
-            </div>
-        </div>
-        <hr class="custom-border">
-    </div>
-    <div class="rectangle">
-        <div class="container ">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h5 class="mt-4">Bakso Lava Cak Kodir</h5>
-                </div>
-                <div class="col-sm-6">
-                    <h4 class="mt-4 red-text">Rp.750.000</h4>
+            <div class="col-8 mx-auto">
+                <div class="row  d-flex justify-content-around">
+                    <div
+                        class="col-5 bg-success bg-opacity-50 py-3 rounded-5 shadow d-flex flex-column justify-content-center align-items-center">
+                        <h4 class="m-0">Total Mitra</h4>
+                        <p class="m-0">15 Mitra</p>
+                    </div>
+                    <div
+                        class="col-5 bg-success bg-opacity-50 py-3 rounded-5 shadow d-flex flex-column justify-content-center align-items-center">
+                        <h4 class="m-0">Total Pendapatan</h4>
+                        <p class="m-0">Rp 1.600.000</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="rectangle">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h5 class="mt-4">Warung Ishal Enak</h5>
-                </div>
-                <div class="col-sm-6">
-                    <h4 class="mt-4 red-text">Rp.950.000</h4>
-                </div>
+
+
+    <div class="row">
+        <img src="/assets/Photo1.jpg" alt="Gambar 1" />
+        <div class="content">
+            <h3>Bakso Lava Cak Kodir</h3>
+            <div class="col">
+                <h5 class="text-right">Total Pendapatan</h5>
+                <h6 class="text-right">RP700.000</h6>
             </div>
         </div>
     </div>
-    <div class="rectangle">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h5 class="mt-4">Masakan Bang Jakbar</h5>
-                </div>
-                <div class="col-sm-6">
-                    <h4 class="mt-4 red-text">Rp.650.000</h4>
-                </div>
+    <div class="row">
+        <img src="/assets/Photo1.jpg" alt="Gambar 1" />
+        <div class="content">
+            <h3>Bakso Lava Cak Kodir</h3>
+            <div class="col">
+                <h5 class="text-right">Total Pendapatan</h5>
+                <h6 class="text-right">RP700.000</h6>
             </div>
         </div>
+    </div>
+    <div class="row">
+        <img src="/assets/Photo1.jpg" alt="Gambar 1" />
+        <div class="content">
+            <h3>Bakso Lava Cak Kodir</h3>
+            <div class="col">
+                <h5 class="text-right">Total Pendapatan</h5>
+                <h6 class="text-right">RP700.000</h6>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <img src="/assets/Photo1.jpg" alt="Gambar 1" />
+        <div class="content">
+            <h3>Bakso Lava Cak Kodir</h3>
+            <div class="col">
+                <h5 class="text-right">Total Pendapatan</h5>
+                <h6 class="text-right">RP700.000</h6>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <img src="/assets/Photo1.jpg" alt="Gambar 1" />
+        <div class="content">
+            <h3>Bakso Lava Cak Kodir</h3>
+            <div class="col">
+                <h5 class="text-right">Total Pendapatan</h5>
+                <h6 class="text-right">RP700.000</h6>
+            </div>
+        </div>
+    </div>
+
+    
     </div>
 </body>
 

@@ -147,4 +147,12 @@ class SellerController extends Controller
     {
         return view('seller/revenue_seller');
     }
+
+    public function confirmOrders()
+    {
+        return view('seller/confirm_order', [
+            'title' => 'Penjual: Konfirmasi Pesanan',
+            'style' => '/styles/seller/confirm-order.css'
+        ]);
+    }
 }
