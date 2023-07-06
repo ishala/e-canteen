@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('price');
             $table->integer('quantity');
+            $table->boolean('status')->default(false);
             $table->foreignId('buyer_id');
             $table->foreignId('product_id');
             $table->foreign('buyer_id')->references('id')->on('buyers')->onDelete('cascade')->onUpdate('cascade');

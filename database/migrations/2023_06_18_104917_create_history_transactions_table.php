@@ -16,9 +16,7 @@ return new class extends Migration
             $table->bigInteger('total_price');
             $table->integer('num_table');
             $table->text('all_products');
-            $table->boolean('status')->default(false);
-            $table->foreignId('trans_id');
-            $table->foreign('trans_id')->references('id')->on('transactions')->onDelete('cascade')->onUpdate('cascade');
+            $table->text('trans_id');
             $table->timestamps();
         });
 
