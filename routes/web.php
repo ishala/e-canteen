@@ -23,41 +23,42 @@ use App\Models\Product;
 */
 
 //profile
-Route::get('/profile', [ProfileController::class, 'index']); //done
-Route::get('/edit-profile', [ProfileController::class, 'update']); //done
+Route::get('/profile', [ProfileController::class, 'index']); 
+Route::get('/edit-profile', [ProfileController::class, 'update']); 
 
 //Login
-Route::get('/login', [LoginController::class, 'index'])->name('account.login'); //done
-Route::get('/login/forgot-pw', [LoginController::class, 'forgotPw']); //done
-Route::get('/login/forgot-pw-next', [LoginController::class, 'forgotPwNext']); //done
-Route::post('/login', [LoginController::class, 'authenticate']); //done
+Route::get('/login', [LoginController::class, 'index'])->name('account.login'); 
+Route::get('/login/forgot-pw', [LoginController::class, 'forgotPw']); 
+Route::get('/login/forgot-pw-next', [LoginController::class, 'forgotPwNext']); 
+Route::post('/login', [LoginController::class, 'authenticate']); 
 
 //Register
-Route::get('/register', [RegistController::class, 'index']); //done
-Route::get('/register/role', [RegistController::class, 'addRoleView']); //done
-Route::post('/register/role', [RegistController::class, 'role']); //done
-Route::post('/register/regist', [RegistController::class, 'addRole']); //done
+Route::get('/register', [RegistController::class, 'index']); 
+Route::get('/register/role', [RegistController::class, 'addRoleView']); 
+Route::post('/register/role', [RegistController::class, 'role']); 
+Route::post('/register/regist', [RegistController::class, 'addRole']); 
 
 
 //Admin
-Route::get('/admin', [AdminController::class, 'index'])->name('admin'); //done
-Route::get('/admin/add-mitra', [AdminController::class, 'create'])->name('admin.add-mitra'); //done
-Route::get('/admin/detail-mitra/{seller:id}', [AdminController::class, 'show'])->name('admin.detail-mitra'); //need revisi-database
-Route::get('/admin/detail-mitra/{seller:id}/edit', [AdminController::class, 'edit'])->name('admin.edit-mitra'); //done
-Route::get('/admin/search-mitra', [AdminController::class, 'search'])->name('admin.search-mitra'); //need revisi-database
-Route::get('/admin/revenue-mitra', [AdminController::class, 'totalRevenue'])->name('admin.revenue'); //need revisi-database
+Route::get('/admin', [AdminController::class, 'index'])->name('admin'); 
+Route::get('/admin/add-mitra', [AdminController::class, 'create'])->name('admin.add-mitra'); 
+Route::get('/admin/detail-mitra/{seller:id}', [AdminController::class, 'show'])->name('admin.detail-mitra');  
+Route::get('/admin/detail-mitra/{seller:id}/edit', [AdminController::class, 'edit'])->name('admin.edit-mitra'); 
+Route::get('/admin/search-mitra', [AdminController::class, 'search'])->name('admin.search-mitra'); 
+Route::get('/admin/revenue-mitra', [AdminController::class, 'totalRevenue'])->name('admin.revenue'); 
 
-Route::post('/admin/add-mitra', [AdminController::class, 'store'])->name('admin.add-mitra-process'); //done
-Route::post('/admin/detail-mitra/{seller:id}/edit', [AdminController::class, 'update'])->name('admin.update-mitra'); //done
-Route::post('/admin', [AdminController::class, 'destroy'])->name('admin.delete-mitra'); //done
+Route::post('/admin/add-mitra', [AdminController::class, 'store'])->name('admin.add-mitra-process'); 
+Route::post('/admin/detail-mitra/{seller:id}/edit', [AdminController::class, 'update'])->name('admin.update-mitra'); 
+Route::post('/admin', [AdminController::class, 'destroy'])->name('admin.delete-mitra'); 
 
 
 //Seller
-Route::get('/seller', [SellerController::class, 'index'])->name('seller');//need revisi tampilan navbar, logo di navbar, nyambungin di tiap navbar ke halaman2 seller
+Route::get('/seller', [SellerController::class, 'index'])->name('seller');
 Route::get('/seller/all-products', [SellerController::class, 'show'])->name('seller.all-products');
-Route::get('/seller/all-products/add-product', [SellerController::class, 'create'])->name('seller.add-product');//need revisi tampilan navbar, logo di navbar, nyambungin di tiap navbar ke halaman2 seller
-Route::get('/seller/all-products/{product:id}/edit-product', [SellerController::class, 'edit'])->name('seller.edit-product');//need revisi tampilan navbar, nyambungin di tiap navbar ke halaman2 seller
-Route::get('/seller/revenue', [SellerController::class, 'getRevenue'])->name('seller.revenue');//need revisi database
+Route::get('/seller/all-products/add-product', [SellerController::class, 'create'])->name('seller.add-product');
+Route::get('/seller/all-products/{product:id}/edit-product', [SellerController::class, 'edit'])->name('seller.edit-product');
+Route::get('/seller/revenue', [SellerController::class, 'getRevenue'])->name('seller.revenue');
+Route::get('/seller/confirm-orders', [SellerController::class, 'confirmOrders'])->name('seller.confirm-orders');
 
 Route::post('/seller/all-products', [SellerController::class, 'show'])->name('seller.all-products');
 Route::post('/seller/all-products/add-product', [SellerController::class, 'store'])->name('seller.add-product');
@@ -65,10 +66,17 @@ Route::post('/seller/all-products/{product:id}/edit-product', [SellerController:
 Route::post('/seller/all-products/{product:id}/delete-product', [SellerController::class, 'destroy'])->name('seller.delete-product');
 
 //Buyer
-Route::get('/payment', [TransactionController::class, 'index'])->name('buyer.payment');
 Route::get('/buyer/order/{product:id}', [ProductController::class, 'show'])->name('buyer.detail-product');
-Route::get('/buyer', [ProductController::class, 'index'])->name('buyer');//need revisi teks navbar, besar logo
-Route::get('/buyer/product', [ProductController::class, 'show'])->name('buyer.all-products');//need revisi fungsional
-Route::get('/buyer/cart', [ProductController::class, 'edit'])->name('buyer.cart'); //need revisi fungsional
+Route::get('/buyer', [ProductController::class, 'index'])->name('buyer');
+Route::get('/buyer/product', [ProductController::class, 'show'])->name('buyer.all-products');
+Route::get('/buyer/cart', [TransactionController::class, 'show'])->name('buyer.cart'); 
+Route::get('/buyer/payment', [TransactionController::class, 'index'])->name('buyer.payment');
 
+Route::get('/buyer/cart/delete/{transact}', [TransactionController::class, 'delete'])->name('buyer.cart-delete'); 
+Route::post('/buyer/cart', [TransactionController::class, 'create'])->name('buyer.cart-process');
+Route::post('buyer/payment', [TransactionController::class, 'store'])->name('buyer.payment-process');
 Route::post('/buyer', [ProductController::class, 'index'])->name('buyer');
+
+//dan lain-lain
+Route::get('/landing-page', [ProfileController::class, 'getLandingPage'])->name('landing-page');
+Route::get('/about-us', [ProfileController::class, 'getAboutUs'])->name('about-us');
