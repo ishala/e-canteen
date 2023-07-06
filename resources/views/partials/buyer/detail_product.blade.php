@@ -7,7 +7,54 @@
     <title>{{ $title }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ $style }}">
+
+    <script>
+        $(document).ready(function() {
+            let qty = 0;
+            $('.tambah').click(function() {
+                if (qty >= 0) {
+                    qty++;
+                    $('.kuantitas').text(qty);
+
+                    $(this).addClass('scale');
+                    setTimeout(() => {
+                        $('.tambah').removeClass('scale');
+                    }, 200);
+
+                    parseInt($('#quantity').val(qty));
+                    let kuantitas = $('#quantity').val();
+                    console.log('ini kuantitas ' + kuantitas);
+                }
+            })
+            $('.kurang').click(function() {
+                if (qty > 0) {
+                    qty--;
+                    $('.kuantitas').text(qty);
+
+                    $(this).addClass('scale');
+                    setTimeout(() => {
+                        $('.kurang').removeClass('scale');
+                    }, 200);
+
+                    parseInt($('#quantity').val(qty));
+                    let kuantitas = $('#quantity').val();
+                    console.log('ini kuantitas ' + kuantitas);
+                }
+
+            })
+            $('.keranjang').click(function() {
+                // Ambil referensi ke elemen form
+                var form = $('#cart');
+                // Setel aksi form ke URL yang diinginkan
+                form.attr('action', "{{ route('buyer.cart-process') }}");
+                // Kirimkan formulir secara manual
+                form.submit();
+            })
+        })
+    </script>
 </head>
 
 <body>
@@ -37,21 +84,31 @@
                     <img src="/assets/favorite_icon.png" class="favorite" alt="">
                 </div>
             </div>
-            <p class="deskripsi">Nasi goreng buatan Pak Faishal adalah sebuah hidangan yang memukau dengan
-                aroma yang menggugah selera dan cita rasa yang lezat. Pak Faishal, seorang ahli
-                masakan yang berbakat, sehingga menghasilkan hidangan yang luar biasa.</p>
+            <p class="deskripsi"> {{ $product->description }}</p>
+
+
             <div class="container d-flex flex-row">
-                <img src="/assets/plus_qty.png" class="kuantitas" alt="">
-                <p class="ms-4 fs-3">0</p>
-                <img src="/assets/minus_qty.png" class="kuantitas ms-4" alt="">
+                <img src="/assets/plus_qty.png" class="tambah" alt="">
+                <p class="ms-4 fs-3 kuantitas">0</p>
+                <img src="/assets/minus_qty.png" class="kurang ms-4" alt="">
             </div>
         </div>
     </div>
 
+    <form action="{{ route('buyer.cart-process') }}" id="cart" method="POST">
+        @csrf
+        <input type="hidden" name="quantity" id="quantity">
+        <input type="hidden" name="product_id" value="{{ $product->id }}">
+        <input type="hidden" name="price" value="{{ $product->price }}">
+    </form>
+
+
     <div class="container d-flex flex-row justify-content-end">
-        <button type="submit" class="mt-4 fw-bold keranjang" name="pesan" value="pesan">
-            <a class="nav-link {{ $title == 'Pembeli: Keranjang' ? 'text-danger fw-bold' : 'text-dark' }} text-center"
-                aria-current="page" href="{{ route('buyer.cart') }}">Add Cart</a>
+        <button type="submit" class="mt-4 me-3 keranjang">
+            Add Cart
+        </button>
+        <button type="submit" class="mt-4 beli">
+            Buy Now
         </button>
     </div>
     </div>

@@ -74,20 +74,17 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item mb-2">
-                        <a class="nav-link fs-4 {{ $title == 'Dashboard Mitra' ? 'text-danger fw-bold' : 'text-dark' }}"
+                        <a class="nav-link fs-5 {{ $title == 'Dashboard Mitra' ? 'text-danger fw-bold' : 'text-dark' }}"
                             aria-current="page" href="{{ route('seller') }}">Dashboard</a>
                     </li>
                     <li class="nav-item ms-4">
-                        <a @if ($title == 'Penjual: Tampil Produk') class="nav-link fs-4 text-danger fw-bold" @endif
-                            @if ($title == 'Penjual: Tambah Produk') class="nav-link fs-4 text-danger fw-bold" @endif
-                            @if ($title == 'Penjual: Edit Produk') class="nav-link fs-4 text-danger fw-bold" @endif
-                            class="nav-link fs-4" href="{{ route('seller.all-products') }}">Semua Produk</a>
+                        <a @if ($title == 'Penjual: Tampil Produk') class="nav-link fs-5 text-danger fw-bold" @endif
+                            @if ($title == 'Penjual: Tambah Produk') class="nav-link fs-5 text-danger fw-bold" @endif
+                            @if ($title == 'Penjual: Edit Produk') class="nav-link fs-5 text-danger fw-bold" @endif
+                            class="nav-link fs-5" href="{{ route('seller.all-products') }}">Semua Produk</a>
                     </li>
                     <li class="nav-item ms-4">
-                        <a class="nav-link fs-4 text-dark" href="#">Pendapatan</a>
-                    </li>
-                    <li class="nav-item ms-4">
-                        <a class="nav-link fs-4 text-dark" href="#">Contact</a>
+                        <a class="nav-link fs-5 text-dark" href="#">Pendapatan</a>
                     </li>
                 </ul>
             </div>

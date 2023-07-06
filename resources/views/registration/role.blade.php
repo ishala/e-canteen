@@ -27,6 +27,9 @@
             <input type="hidden" value="{{ $data['name'] }}" name="name">
             <input type="hidden" value="{{ $data['email'] }}" name="email">
             <input type="hidden" value="{{ $data['password'] }}" name="password">
+
+
+            
             <div class="row d-flex flex-row row-cols-md-3 g-5">
                 <label for="seller">
                     <input type="radio" name="role" value="2" id="seller" style="display: none;">

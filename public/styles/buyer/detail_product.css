@@ -23,9 +23,18 @@ button{
     width: 170px;
     height: 50px;
     border-radius: 50px;
-    background-color: #DF2E38;
-    border-style: none;
-    padding-top: 10px;
+}
+
+.tambah, .kurang{
+    width: 50px;
+    height: 50px;
+}
+.tambah, .kurang {
+    transition: all 0.2s ease; 
+}
+
+.tambah.scale, .kurang.scale {
+    transform: scale(1.2); 
 }
 
 .logo{
@@ -34,7 +43,15 @@ button{
 }
 
 .keranjang{
-    background-color: #14A033;
+    background-color: white;
+    color: #DF2E38;
+    font-size: 20px;
+    border: 1px solid #DF2E38;
+}
+
+.beli {
+    background-color: #DF2E38;
+    border-style: none;
     color: white;
     font-size: 20px;
 }

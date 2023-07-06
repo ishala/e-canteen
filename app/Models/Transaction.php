@@ -9,7 +9,7 @@ class Transaction extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['$id', 'id_buyer', 'id_product'];
+    protected $guarded = ['$id'];
 
     public function buyer(){
         return $this->belongsTo(Buyer::class);
@@ -20,7 +20,7 @@ class Transaction extends Model
     }
 
     public function product(){
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class, 'product_id', 'id');
     }
 
     public function seller(){

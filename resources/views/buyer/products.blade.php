@@ -77,7 +77,6 @@
                         <a class="nav-link {{ $title == 'Pembeli: Keranjang' ? 'text-danger fw-bold' : 'text-dark' }}"
                             aria-current="page" href="{{ route('buyer.cart') }}">Keranjang</a>
                     </li>
-
                 </ul>
             </div>
             <div class="me-5">
@@ -98,6 +97,9 @@
         @endif
         @if ($title == 'Pembeli: Detail Produk')
             @include('partials.buyer.detail_product')
+        @endif
+        @if ($title == 'Pembeli: Pembayaran')
+            @include('partials.buyer.payment')
         @endif
     </div>
 

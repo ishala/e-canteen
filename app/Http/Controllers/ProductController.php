@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Transaction;
 
 class ProductController extends Controller
 {
@@ -76,17 +77,9 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request, Product $product)
+    public function edit(Request $request, Product $product, Transaction $transaction)
     {
-        $akun = $request->cookie('account');
-        $product = $product->with('seller')->get();
-
-        return view('buyer/products', [
-            'title' => 'Pembeli: Keranjang',
-            'style' => '/styles/buyer/cart.css',
-            'account' => $akun,
-            'products' => $product,
-        ]);
+        
     }
 
     /**
