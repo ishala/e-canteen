@@ -48,7 +48,7 @@
         <div class="container col-2 d-flex flex-row">
             <div class="container d-flex btn tambah col-4 ms-2">
                 <a href="{{ route('admin.add-mitra') }}" class="d-flex flex-row text-decoration-none">
-                    <img src="/assets/plus.png" class="mt-1 col-2" alt="tambah">
+                    <img src="/assets/plus.png" class="col-2" alt="tambah">
                     <p class="mt-1 ms-4 col-10">Tambah Mitra</p>
                 </a>
             </div>
