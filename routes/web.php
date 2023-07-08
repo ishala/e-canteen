@@ -48,6 +48,7 @@ Route::get('/admin/search-mitra', [AdminController::class, 'search'])->name('adm
 Route::get('/admin/revenue-mitra', [AdminController::class, 'totalRevenue'])->name('admin.revenue'); 
 
 Route::post('/admin/add-mitra', [AdminController::class, 'store'])->name('admin.add-mitra-process'); 
+Route::post('/admin/search-mitra', [AdminController::class, 'searchControl'])->name('admin.search-mitra-process'); 
 Route::post('/admin/detail-mitra/{seller:id}/edit', [AdminController::class, 'update'])->name('admin.update-mitra'); 
 Route::post('/admin', [AdminController::class, 'destroy'])->name('admin.delete-mitra'); 
 
