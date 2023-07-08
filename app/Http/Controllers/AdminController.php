@@ -16,10 +16,10 @@ class AdminController extends Controller
      */
     public function index(Request $request, Seller $seller)
     {
-        if($request->cookie() != null){
+        if ($request->cookie() != null) {
             $akun = $request->cookie('account');
             $akun = unserialize($akun);
-            
+
             return view('admin/main_page_admin', [
                 'title' => 'Admin: Semua Mitra',
                 'style' => '/styles/admin/main-page.css',
@@ -32,7 +32,8 @@ class AdminController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request, Seller $seller){
+    public function create(Request $request, Seller $seller)
+    {
         return view('/admin/add_mitra', [
             'title' => 'Tambah Mitra',
             'seller' => $seller
@@ -111,19 +112,36 @@ class AdminController extends Controller
         return redirect()->route('admin');
     }
 
-    public function search(Seller $seller, Product $product){
+    public function search(Seller $seller, Product $product)
+    {
         $seller = $seller->all();
         $product = $product->all();
-        
+
         return view('/admin/search_mitra', [
-            'title' => 'Cari Mitra',
+            'title' => 'Admin: Cari Mitra',
             'style' => '/styles/admin/search-mitra.css',
+            'routeProcess' => '/admin/search-mitra',
             'sellers' => $seller,
             'products' => $product
         ]);
     }
 
-    public function totalRevenue(){
+    public function searchControl(Request $request, Seller $seller)
+    {
+        $name = $request->input('query');
+        $dataSeller = $seller->where('name', 'like', '%' . $name . '%')->get();
+        $dataAll = $seller->all();
+
+        $data = [
+            'dataSeller' => $dataSeller,
+            'dataAll' => $dataAll
+        ];
+        
+        return response()->json($data);
+    }
+
+    public function totalRevenue()
+    {
         return view('/admin/total_revenue', [
             'title' => 'Admin: Total Pendapatan',
         ]);
