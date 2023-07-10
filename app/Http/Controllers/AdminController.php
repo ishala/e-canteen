@@ -108,7 +108,7 @@ class AdminController extends Controller
     {
         $sellerId = $request->get('sellerChecked');
         $seller->whereIn('id', $sellerId)->delete();
-
+        
         return redirect()->route('admin');
     }
 
