@@ -97,6 +97,36 @@ class SellerController extends Controller
         ]);
     }
 
+    public function search(Product $product, Request $request)
+    {
+        $akun = $request->cookie('account');
+        $akun = unserialize($akun);
+        $product = $product->where('seller_id', $akun->id)->get();
+
+        return view('seller/main_page', [
+            'title' => 'Penjual: Cari Produk',
+            'style' => '/styles/seller/search-product.css',
+            'products' => $product,
+        ]);
+    }
+
+    public function searchProcess(Request $request, Product $product, Seller $seller)
+    {
+        $akun = $request->cookie('account');
+        $akun = unserialize($akun);
+
+        $name = $request->input('query');
+
+        $dataProduct = $product->where('name', 'like', '%' . $name . '%')->where('seller_id', $akun->id)->get();
+        $dataAll = $product->where('seller_id', $akun->id)->get();
+
+        $data = [
+            'dataProduct' => $dataProduct,
+            'dataAll' => $dataAll
+        ];
+        
+        return response()->json($data);
+    }
 
     /**
      * Show the form for editing the specified resource.

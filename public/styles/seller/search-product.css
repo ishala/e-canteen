@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+.navbar{
+    background-color: #EBFFEC;
+    max-height: 150px;
+    overflow: hidden;
+}
+.navbar-brand{
+    width: 200px;
+}
+
+.bungkus {
+    width: 80%;
+    flex-wrap: wrap;
+    margin-left: 120px;
+    padding-top: 30px;
+}

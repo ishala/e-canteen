@@ -22,14 +22,40 @@ class BuyerController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function cartShow(Request $request, Product $product)
+    public function search(Request $request, Product $product, Seller $seller)
     {
-        
+        $product = $product->with('seller')->get();
+        $seller = $seller->all();
+
+        return view('buyer/products', [
+            'title' => 'Pembeli: Cari Produk',
+            'style' => '/styles/buyer/search_product.css',
+            'products' => $product,
+            'sellers' => $seller
+        ]);
     }
 
-    public function create()
+    public function searchProcess(Request $request, Product $product, Seller $seller)
     {
-        //
+        $name = $request->input('query');
+
+        $dataFoundSeller = $seller->where('name', 'like', '%' . $name . '%')->get();
+        $dataFoundProduct = $product->where('name', 'like', '%' . $name . '%')
+                            ->with('seller')
+                            ->get();
+
+        
+        $dataAllSeller = $seller->all();
+        $dataAllProduct = $product->all();
+
+        $data = [
+            'dataFoundProduct' => $dataFoundProduct,
+            'dataFoundSeller' => $dataFoundSeller,
+            'dataAllProduct' => $dataAllProduct,
+            'dataAllSeller' => $dataAllSeller
+        ];
+        
+        return response()->json($data);
     }
 
     /**

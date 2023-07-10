@@ -56,6 +56,7 @@ Route::post('/admin', [AdminController::class, 'destroy'])->name('admin.delete-m
 //Seller
 Route::get('/seller', [SellerController::class, 'index'])->name('seller');
 Route::get('/seller/all-products', [SellerController::class, 'show'])->name('seller.all-products');
+Route::get('/seller/all-products/search', [SellerController::class, 'search'])->name('seller.search-products');
 Route::get('/seller/all-products/add-product', [SellerController::class, 'create'])->name('seller.add-product');
 Route::get('/seller/all-products/{product:id}/edit-product', [SellerController::class, 'edit'])->name('seller.edit-product');
 Route::get('/seller/revenue', [SellerController::class, 'getRevenue'])->name('seller.revenue');
@@ -65,18 +66,21 @@ Route::post('/seller/all-products', [SellerController::class, 'show'])->name('se
 Route::post('/seller/all-products/add-product', [SellerController::class, 'store'])->name('seller.add-product');
 Route::post('/seller/all-products/{product:id}/edit-product', [SellerController::class, 'update'])->name('seller.update-product');
 Route::post('/seller/all-products/{product:id}/delete-product', [SellerController::class, 'destroy'])->name('seller.delete-product');
+Route::post('/seller/all-products/search', [SellerController::class, 'searchProcess'])->name('seller.search-products-process');
 
 //Buyer
 Route::get('/buyer/order/{product:id}', [ProductController::class, 'show'])->name('buyer.detail-product');
 Route::get('/buyer', [ProductController::class, 'index'])->name('buyer');
-Route::get('/buyer/product', [ProductController::class, 'show'])->name('buyer.all-products');
+Route::get('/buyer/products', [ProductController::class, 'show'])->name('buyer.all-products');
 Route::get('/buyer/cart', [TransactionController::class, 'show'])->name('buyer.cart'); 
 Route::get('/buyer/payment', [TransactionController::class, 'index'])->name('buyer.payment');
+Route::get('/buyer/products/search', [BuyerController::class, 'search'])->name('buyer.search-products');
 
 Route::get('/buyer/cart/delete/{transact}', [TransactionController::class, 'delete'])->name('buyer.cart-delete'); 
 Route::post('/buyer/cart', [TransactionController::class, 'create'])->name('buyer.cart-process');
 Route::post('buyer/payment', [TransactionController::class, 'store'])->name('buyer.payment-process');
 Route::post('/buyer', [ProductController::class, 'index'])->name('buyer');
+Route::post('/buyer/products/search', [BuyerController::class, 'searchProcess'])->name('buyer.search-products-process');
 
 //dan lain-lain
 Route::get('/landing-page', [ProfileController::class, 'getLandingPage'])->name('landing-page');
