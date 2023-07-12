@@ -11,7 +11,8 @@
     text-decoration: none;
 }
 
-.submitter form{
+
+.submitter .formulir{
     width: 95%;
     margin-left: 50px;
 }
@@ -23,20 +24,15 @@
 .box{
     border: 5px dashed grey;
     border-spacing: 5px;
-    height: 150px;
-    width: 150px;
-    max-width: 150px;
-    max-height: 150px;
+    height: 320px;
+    width: 450px;
 }
 
 .wadah img{
-    width: 400px;
+    width: 200px;
     max-width: 400px;
-    max-height: fit-content;
-    margin-top: 30px;
-    border: 3.5px dashed grey;
-    border-spacing: 1px;
-    border-radius: 15px;
+    height: 150px;
+    margin: 70px 0 50px 110px;
 }
 
 #tambahBtn{

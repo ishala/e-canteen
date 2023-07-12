@@ -51,6 +51,19 @@
                 // Mengirimkan form
                 form.unbind('submit').submit();
             });
+
+            $('#formFile').change(function(){
+                if(this.files && this.files[0]){
+                    let fileReader = new FileReader();
+                    fileReader.onload = function(e) {
+                        $('#gambar').attr('src', e.target.result);
+                    }
+                    fileReader.readAsDataURL(this.files[0]);
+                }
+                else {
+                    $('#gambar').attr('src', '/assets/empty-picture.png');
+                }
+            })
         });
     </script>
     <link rel="stylesheet" href="{{ $style }}">

@@ -21,6 +21,19 @@
                 // Kirimkan formulir secara manual
                 form.submit();
             });
+
+            $('#formFile').change(function(){
+                if(this.files && this.files[0]){
+                    let fileReader = new FileReader();
+                    fileReader.onload = function(e) {
+                        $('#gambar').attr('src', e.target.result);
+                    }
+                    fileReader.readAsDataURL(this.files[0]);
+                }
+                else {
+                    $('#gambar').attr('src', '/assets/empty-picture.png');
+                }
+            })
         });
     </script>
 </head>
@@ -34,13 +47,18 @@
     </div>
 
     <!--Isi-->
-    <div class="container d-flex flex-row mt-5 content">
-        <div class="box p-1 mt-5">
-            <img src="/assets/cafe.png" alt="">
-        </div>
-        <div class="container-fluid d-flex flex-column inputan">
-            <form method="POST" action="{{ route('admin.add-mitra-process') }}" id="seller">
-                @csrf
+    <form method="POST" action="{{ route('admin.add-mitra-process') }}" id="seller" enctype="multipart/form-data">
+        @csrf
+        <div class="container d-flex flex-row mt-5 content">
+            <div class="d-flex flex-column">
+                <div class="box p-1 mt-5">
+                    <img src="/assets/empty-picture.png" alt="" id="gambar">
+                </div>
+                <div class="mt-3">
+                    <input class="form-control" type="file" id="formFile" name="picture">
+                </div>
+            </div>
+            <div class="container-fluid d-flex flex-column inputan">
                 <div class="input-teks">
                     <label for="input-nama" class="fw-semibold">Nama Toko</label><br>
                     <input type="text" id="name" name="name" class="p-2"
@@ -70,8 +88,8 @@
                     <input type="text" id="rent" name="rent" class="p-2"
                         placeholder="Masukkan lama waktu...">
                 </div>
-            </form>
-        </div>
+    </form>
+    </div>
     </div>
 
     <!--Tombol-->

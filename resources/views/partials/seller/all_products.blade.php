@@ -51,12 +51,17 @@
     <div class="wrapper d-flex mt-5 ms-5 flex-row">
         @foreach ($products as $product)
             <div class="card ms-2 col-3">
-                <img src="/assets/buryam.png" class="card-img-top" alt="...">
                 <div class="card-body">
+                    @if ($product->picture)
+                        <img src="{{ asset('storage/' . $product->picture) }}" class="card-img-top" alt="...">
+                    @else
+                        <p class="fs-4 text-center" style="color: grey;">Tidak Ada <br> Gambar</p>
+                    @endif
                     <h5 class="card-title fw-bold">{{ $product->name }}</h5>
                     <p class="card-text">Rp. {{ number_format($product->price, 0, ',', '.') }}</p>
                     <div class="d-flex flex-row-reverse mt-4">
-                        <a href="{{ route('seller.edit-product', $product) }}" class="btn btn-light text-danger">Detail</a>
+                        <a href="{{ route('seller.edit-product', $product) }}"
+                            class="btn btn-light text-danger">Detail</a>
                     </div>
                 </div>
             </div>
@@ -68,13 +73,18 @@
     @if ($count > 0)
         <div class="wrapper d-flex mt-5 ms-5">
             @foreach ($products as $product)
-                <div class="card ms-2">
-                    <img src="/assets/buryam.png" class="card-img-top" alt="...">
+                <div class="card ms-2 col-3">
                     <div class="card-body">
+                    @if ($product->picture)
+                        <img src="{{ asset('storage/' . $product->picture) }}" class="card-img-top" alt="...">
+                    @else
+                        <p class="fs-4 text-center" style="color: grey;">Tidak Ada <br> Gambar</p>
+                    @endif
                         <h5 class="card-title fw-bold">{{ $product->name }}</h5>
                         <p class="card-text">Rp. {{ number_format($product->price, 0, ',', '.') }}</p>
-                        <div class="d-flex flex-row-reverse">
-                            <a href="{{ route('seller.edit-product', $product) }}" class="btn btn-light text-danger">Detail</a>
+                        <div class="d-flex flex-row-reverse mt-4">
+                            <a href="{{ route('seller.edit-product', $product) }}"
+                                class="btn btn-light text-danger">Detail</a>
                         </div>
                     </div>
                 </div>

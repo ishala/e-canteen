@@ -12,18 +12,24 @@
 
     <script>
         $(document).ready(function() {
-            var totalDelete = 0;
+            let totalDelete = 0;
             $('#delText').text(totalDelete);
+            $('.kotak-hapus').css('height', '0px');
 
             $('input[name="sellerChecked[]"]').change(function() {
                 totalDelete = $('input[name="sellerChecked[]"]:checked')
                     .length; // Hitung jumlah checkbox yang terceklis
                 $('#delText').text(totalDelete);
+                if (totalDelete) {
+                    $('.kotak-hapus').css('height', '50px');
+                } else {
+                    $('.kotak-hapus').css('height', '0px');
+                }
             });
 
             $('#hapus').click(function() {
                 // Ambil referensi ke elemen form
-                var form = $('#seller');
+                let form = $('#seller');
                 // Setel aksi form ke URL yang diinginkan
                 form.attr('action', "{{ route('admin.delete-mitra') }}");
                 // Kirimkan formulir secara manual
@@ -72,11 +78,15 @@
     <!--Menu-->
     <form action="{{ route('admin.delete-mitra') }}" method="POST" id="seller">
         @csrf
-        <div class="container d-flex flex-row baris-kartu row justify-content-center">
+        <div class="container mb-3 d-flex flex-row baris-kartu row justify-content-center">
             @foreach ($sellers as $seller)
                 <div class="card col-3 ms-3 mt-2">
-                    <img src="/assets/buryam.png" class="card-img-top" alt="...">
                     <div class="card-body">
+                        @if ($seller->picture)
+                            <img src="{{ asset('storage/' . $seller->picture) }}" class="" alt="...">
+                        @else
+                            <p class="fs-4 text-center" style="color: grey;">Tidak Ada Gambar</p>
+                        @endif
                         <h5 class="card-title fw-bold">{{ $seller->name }}</h5>
                         <p class="card-text">Pengunjung Hari Ini </p>
                         <p class="card-text">15 Orang </p>

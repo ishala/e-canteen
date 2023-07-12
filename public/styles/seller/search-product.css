@@ -11,6 +11,13 @@
     text-decoration: none;
 }
 
+.card img{
+    height: 90px;
+    max-height: 90px;
+    overflow-y: hidden;
+    object-fit: cover;
+}
+
 .navbar{
     background-color: #EBFFEC;
     max-height: 150px;
@@ -21,8 +28,8 @@
 }
 
 .bungkus {
-    width: 80%;
+    width: 70%;
     flex-wrap: wrap;
-    margin-left: 120px;
+    margin-left: 170px;
     padding-top: 30px;
 }

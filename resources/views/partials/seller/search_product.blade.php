@@ -85,8 +85,12 @@
 <div class="bungkus d-flex flex-row mt-3 justify-content-center" id="search-result">
     @foreach ($products as $product)
         <div class="card ms-3 mb-4 col-3">
-            <img src="/assets/buryam.png" class="card-img-top" alt="...">
             <div class="card-body">
+                @if ($product->picture)
+                    <img src="{{ asset('storage/' . $product->picture) }}" class="card-img-top" alt="...">
+                @else
+                    <p class="fs-4 text-center" style="color: grey;">Tidak Ada <br> Gambar</p>
+                @endif
                 <h5 class="card-title fw-bold">{{ $product->name }}</h5>
                 <p class="card-text">Rp. {{ number_format($product->price, 0, ',', '.') }}</p>
                 <div class="d-flex flex-row-reverse">

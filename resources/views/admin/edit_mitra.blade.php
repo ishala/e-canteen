@@ -22,6 +22,15 @@
                 // Kirimkan formulir secara manual
                 form.submit();
             });
+
+            $('#formFile').change(function(){
+                let fileReader = new FileReader();
+                fileReader.onload = function(e) {
+                    $('#gambar').attr('src', e.target.result);
+                }
+                fileReader.readAsDataURL(this.files[0]);
+            })
+            
         });
     </script>
 </head>
@@ -34,13 +43,25 @@
     </div>
 
     <!--Isi-->
-    <div class="container d-flex flex-row mt-5 content">
-        <div class="box p-1 mt-5">
-            <img src="/assets/cafe.png" alt="">
-        </div>
-        <div class="container-fluid d-flex flex-column inputan">
-            <form method="POST" action="{{ route('admin.update-mitra', ['seller' => $seller]) }}" id="seller">
-                @csrf
+    <form method="POST" action="{{ route('admin.update-mitra', ['seller' => $seller]) }}" id="seller">
+        @csrf
+        <input type="hidden" name="oldPicture" value="{{ $seller->picture }}">
+        <div class="container d-flex flex-row mt-5 content">
+            <div class="d-flex flex-column">
+                @if ($seller->picture)
+                    <div class="box p-1 mt-5">
+                        <img src="{{ asset('storage/' . $seller->picture) }}" id="gambar" alt="...">
+                    </div>
+                @else
+                    <div class="box p-1 mt-5">
+                        <img src="/assets/cafe.png" id="gambar" alt="">
+                    </div>
+                @endif
+                <div class="mt-3">
+                    <input class="form-control" type="file" id="formFile" name="picture">
+                </div>
+            </div>
+            <div class="container-fluid d-flex flex-column inputan">
                 <div class="input-teks">
                     <label for="input-nama" class="fw-semibold">Nama Toko</label><br>
                     <input type="text" id="input-nama" name="name" class="p-2" value="{{ $seller->name }}"
@@ -48,7 +69,7 @@
                 </div>
                 <div class="input-teks">
                     <label for="input-nama" class="fw-semibold mt-2">Nama Pemilik</label><br>
-                    <input type="text" id="input-nama" name="owner" class="p-2" value="{{ $seller->owner}}"
+                    <input type="text" id="input-nama" name="owner" class="p-2" value="{{ $seller->owner }}"
                         placeholder="Masukkan nama pemilik...">
                 </div>
                 <div class="input-teks">
@@ -58,8 +79,8 @@
                 </div>
                 <div class="input-teks">
                     <label for="input-nama" class="fw-semibold mt-2">Password</label><br>
-                    <input type="password" id="input-nama" name="password" class="p-2" value="{{ $seller->password }}"
-                        placeholder="Masukkan password...">
+                    <input type="password" id="input-nama" name="password" class="p-2"
+                        value="{{ $seller->password }}" placeholder="Masukkan password...">
                 </div>
                 <div class="input-teks">
                     <label for="input-nama" class="fw-semibold mt-2">Nomor Telepon</label><br>
@@ -71,8 +92,8 @@
                     <input type="text" id="input-nama" name="rent" class="p-2" value="{{ $seller->rent }}"
                         placeholder="Masukkan lama waktu...">
                 </div>
-            </form>
-        </div>
+    </form>
+    </div>
     </div>
 
     <!--Tombol-->

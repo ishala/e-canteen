@@ -17,10 +17,10 @@
     <style>
         .profile-cover {
             height: 500px;
-            margin-top: -200px;
-            background-image: url("/assets/cafe.png");
+            margin-top: -100px;
+            background-image: url("{{ asset('storage/' . $seller->picture) }}");
             background-size: cover;
-            background-position: center;
+            background-position: 70% 30%;
         }
 
         .profile-picture {
@@ -53,8 +53,8 @@
         </div>
 
         <div class="container mt-5 text-center">
-            <img src="/assets/nasgor1.png" class="profile-picture mb-4 mt-100" alt="Foto Profil" />
-
+            <img src="/assets/nasgor1.png" class="profile-picture" alt="Foto Profil" />
+            
             <h1 class="fw-bold">{{ $seller->name }}</h1>
             <div class="row text-muted mt-3">
                 <!--Batas Sewa-->

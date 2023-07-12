@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Seller;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
-use App\Models\Product;
-use App\Models\Seller;
 
 class AdminController extends Controller
 {
@@ -50,10 +51,12 @@ class AdminController extends Controller
             'owner' => 'required|max:255',
             'email' => 'required|email|unique:admins|unique:buyers|unique:sellers',
             'password' => 'required|min:5|max:255',
+            'picture' => 'image|file|max:10240',
             'phone' => 'required',
             'rent' => 'required|min:1',
         ]);
 
+        $validatedData['picture'] = $request->file('picture')->store('mitra-images');
         $validatedData['role'] = 2;
 
         Seller::create($validatedData);
@@ -93,10 +96,17 @@ class AdminController extends Controller
             'owner' => 'required|max:255',
             'email' => 'required',
             'password' => 'required|min:5|max:255',
+            'picture' => 'image|file|max:10240',
             'phone' => 'required',
             'rent' => 'required|min:1',
         ]);
 
+        if($request->file('picture')){
+            if($request->oldPicture){
+                Storage::delete($request->oldPicture);
+            }
+            $validatedData['picture'] = $request->file('picture')->store('mitra-images');
+        }
         Seller::where('id', $seller->id)->update($validatedData);
         return redirect()->route('admin.detail-mitra', ['seller' => $seller]);
     }
@@ -106,9 +116,20 @@ class AdminController extends Controller
      */
     public function destroy(Request $request, Seller $seller)
     {
-        $sellerId = $request->get('sellerChecked');
-        $seller->whereIn('id', $sellerId)->delete();
+        $sellerIds = $request->get('sellerChecked');
+
+        //hapus gambar
+        if ($sellerIds) {
+            foreach($sellerIds as $sellerid){
+                $seller = $seller->find($sellerid);
+                if($seller->picture){
+                    Storage::delete($seller->picture);
+                }
+            }
+        }
         
+        //hapus data
+        $seller->whereIn('id', $sellerIds)->delete();
         return redirect()->route('admin');
     }
 

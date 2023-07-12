@@ -60,6 +60,13 @@
 .card {
     width: 250px;
 }
+
+.card img{
+    height: 90px;
+    max-height: 90px;
+    overflow-y: hidden;
+    object-fit: cover;
+}
 .kategori {
     background-color: white;
     color: #DF2E38;

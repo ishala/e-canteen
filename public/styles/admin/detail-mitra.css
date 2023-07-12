@@ -14,8 +14,9 @@
 
 
 img{
-    height: 350px;
-    width: 500px;
+    height: 150px;
+    width: 170px;
+    margin: 90px 50px 50px 150px;
 }
 
 button {
@@ -37,8 +38,8 @@ button {
 .box{
     border: 5px dashed grey;
     border-spacing: 5px;
-    height: max-content;
-    width: max-content;
+    height: 350px;
+    width: 500px;
 }
 
 .input-teks{

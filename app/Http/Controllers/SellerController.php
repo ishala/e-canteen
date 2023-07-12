@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Seller;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreSellerRequest;
 use App\Http\Requests\UpdateSellerRequest;
-use App\Models\Product;
 
 class SellerController extends Controller
 {
@@ -58,8 +59,10 @@ class SellerController extends Controller
             'category' => 'required|max:1',
             'price' => 'required',
             'description' => 'required',
+            'picture' => 'image|file|max:10240'
         ]);
-
+        
+        $validatedData['picture'] = $request->file('picture')->store('product-images');
         $validatedData['seller_id'] = $akun->id;
 
 
@@ -150,7 +153,15 @@ class SellerController extends Controller
             'category' => 'required|max:1',
             'price' => 'required',
             'description' => 'required',
+            'picture' => 'image|file|max:10240'
         ]);
+        
+        if($request->file('picture')){
+            if($request->oldPicture){
+                Storage::delete($request->oldPicture);
+            }
+            $validatedData['picture'] = $request->file('picture')->store('product-images');
+        }
 
         $validatedData['price'] = str_replace(['.', ','], '', $validatedData['price']);
 
@@ -167,6 +178,9 @@ class SellerController extends Controller
 
         $product = $product->find($productId); // Temukan produk berdasarkan ID
         if ($product) {
+            if($product->picture){
+                Storage::delete($product->picture);
+            }
             $product->delete(); // Hapus produk jika ditemukan
         }
 
