@@ -1,35 +1,65 @@
 <h3 class="text-center text-black ">Daftar Keranjang</h3>
 
-<div class="list-produk mt-5">
-    @foreach ($transaction as $trans)
-        <div class="container produk d-flex flex-row mt-4">
-            <div class="col-3 mt-3">
-                <img src="/assets/nasgor1.png" class="img-fluid rounded-3" alt="Cotton T-shirt" />
-            </div>
-            <div class="col-6">
-                <h2 class="fw-normal  mt-3 text-center">{{ $trans->product->name }}</h2>
-                <div class="d-flex flex-row">
-                    <div class="col-6">
-                        <p class="fw-bold fs-4"> Banyak Produk</p>
-                        <p class="nilai1 text-danger">{{ $trans->quantity }}</p>
+
+<style>
+    .checkProduct input[type="checkbox"] {
+        /* Mengatur ukuran checkbox */
+        width: 25px;
+        height: 25px;
+    }
+</style>
+
+<div class="mt-5">
+    <form action="{{ route('buyer.payment-process') }}" method="POST" id="transactions">
+        @csrf
+        @foreach ($transaction as $trans)
+            <div class="container border border-3 rounded-3 mb-4">
+                <div class="p-4 d-flex flex-row list-produk justify-content-between align-items-center">
+                    <div class="checkProduct">
+                        <input name="productChecked[]" type="checkbox" value="{{ $trans->id }}" id="chkProduct">
                     </div>
-                    <div class="col-6">
-                        <p class="fw-bold fs-4" style="margin-left: 70px;">Total Harga</p>
-                        <p class="nilai2 text-danger">Rp. {{ number_format($trans->price, 0, ',', '.') }}</p>
+                    <div class="col-md-2 col-lg-2 col-xl-2">
+                        <img src="/assets/nasgor1.png" class="img-fluid rounded-3" alt="Cotton T-shirt">
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-xl-3">
+                        <p class="lead fw-normal mb-2">
+                        <h3>{{ $trans->product->name }}</h3>
+                        </p>
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                        <p class="lead fw-normal mb-2">
+                        <h5 class="ms-5">X{{ $trans->quantity }}</h5>
+                        </p>
+                    </div>
+                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                        <h5 class="mb-0">Rp. {{ number_format($trans->price, 0, ',', '.') }}</h5>
+                    </div>
+                    <div class="col-md-1 col-lg-1 col-xl-1">
+                        <a href="{{ route('buyer.cart-delete', ['transact' => $trans]) }}"
+                            class="text-danger fw-normal text-decoration-none">
+                            <h3><i class="bi bi-trash3-fill"></i></h3>
+                        </a>
                     </div>
                 </div>
             </div>
-            <a href="{{ route('buyer.cart-delete', ['transact' => $trans]) }}">
-                <p class="fs-3 fw-bold ms-5 mt-5">Hapus</p>
-            </a>
-        </div>
-    @endforeach
+        @endforeach
+    </form>
 </div>
 
-<form action="{{ route('buyer.payment-process') }}" method="POST">
-    @csrf
-    <input type="hidden" value="{{ $transaction }}" name="transaction">
-    <button type="submit" class="btn btn-warning mt-3">
-        Buat Pesanan
-    </button>
-</form>
+{{-- <input type="hidden" value="{{ $transaction }}" name="transaction"> --}}
+<button type="submit" class="btn btn-warning btn-block btn-lg tombol-pesan" id="buat-pesanan">
+    <p class="text-center ms-3">Buat Pesanan</p>
+</button>
+
+
+
+<script>
+    $('#buat-pesanan').click(function() {
+        // Ambil referensi ke elemen form
+        let form = $('#transactions');
+        // Setel aksi form ke URL yang diinginkan
+        form.attr('action', "{{ route('buyer.payment-process') }}");
+        // Kirimkan formulir secara manual
+        form.submit();
+    });
+</script>

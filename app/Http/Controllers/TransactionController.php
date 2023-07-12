@@ -57,14 +57,16 @@ class TransactionController extends Controller
         $allTransId = [];
         $allProductsId = [];
         $allProductsName = [];
-        $transaction = json_decode($request->input('transaction'), true);
+        //$transaction = json_decode($request->input('transaction'), true);
+        $transaction = $request->input('productChecked');
+        $transaction = Transaction::whereIn('id', $transaction)->get();
 
         //mengambil tiap nilai price dan produk id (PRICE)
         foreach ($transaction as $transact) {
-            $totalPrice += $transact['price'];
+            $totalPrice += $transact->price;
             //mengambil nilai product_id untuk mencari detail produk
-            $allProductsId[] = $transact['product_id']; 
-            $allTransId[] = $transact['id'];
+            $allProductsId[] = $transact->product_id; 
+            $allTransId[] = $transact->id;
         }
 
         //sementara untuk nilai table menggunakan nilai random (TABLE)
