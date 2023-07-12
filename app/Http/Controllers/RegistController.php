@@ -49,17 +49,30 @@ class RegistController extends Controller
     {   
         $createData = $request->all();
 
-        if($createData['role'] == 3){
+        if($createData['role'] == 2){
+            dd($createData);
             Seller::create([
                 'name' => $createData['name'],
                 'email' => $createData['email'],
                 'password' => $createData['password'],
                 'role' => $createData['role'],
+                'owner' => '',
+                'phone' => ''
             ]);
-            echo 'ini buyer';
+            return redirect()->route('account.login');
+        }
+        else if($createData['role'] == 3){
+            dd($createData);
+            Buyer::create([
+                'name' => $createData['name'],
+                'email' => $createData['email'],
+                'password' => $createData['password'],
+                'role' => $createData['role'],
+            ]);
+            return redirect()->route('account.login');
         }
         else{
-            echo 'ini seller';
+            echo 'Data belum benar';
         }
     }
 }

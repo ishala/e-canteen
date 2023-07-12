@@ -6,13 +6,26 @@
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ $style }}">
 
     <title>Register</title>
+
+    <script>
+        $(document).ready(function() {
+            $('.card').click(function() {
+                // Menghapus seleksi sebelumnya
+                $('.card').removeClass('selected');
+
+                // Menambahkan seleksi pada item yang diklik
+                $(this).addClass('selected');
+            });
+        });
+    </script>
 </head>
 
 
@@ -29,7 +42,7 @@
             <input type="hidden" value="{{ $data['password'] }}" name="password">
 
 
-            
+
             <div class="row d-flex flex-row row-cols-md-3 g-5">
                 <label for="seller">
                     <input type="radio" name="role" value="2" id="seller" style="display: none;">

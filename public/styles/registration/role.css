@@ -17,7 +17,7 @@ body {
     background-color: #EBFFEC;
 }
 
-.logo{
+.logo {
     width: 70px;
     margin: 10px 0 0 20px;
 }
@@ -34,25 +34,31 @@ body {
 
 .row {
     margin-left: 230px;
-    margin-top: 10px;   
+    margin-top: 10px;
 }
 
 .card {
     height: 230px;
     border-radius: 25px;
     justify-content: center;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
-.col > .card:hover {
-    transform:scale(1.1);
+.card.selected {
+    border: 2px solid rgb(64, 64, 180);
+    font-size: 16px;
+    transform: scale(1.1);
+}
+
+.col>.card:hover {
+    transform: scale(1.1);
 }
 
 .card-body {
     text-align: center;
 }
 
-.card > img {
+.card>img {
     margin-left: 50px;
     margin-top: 50px;
 }
