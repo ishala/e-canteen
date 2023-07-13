@@ -51,14 +51,14 @@ class AdminController extends Controller
             'owner' => 'required|max:255',
             'email' => 'required|email|unique:admins|unique:buyers|unique:sellers',
             'password' => 'required|min:5|max:255',
-            'picture' => 'image|file|max:10240',
+            'picture' => 'image|file|max:100240',
             'phone' => 'required',
             'rent' => 'required|min:1',
         ]);
 
         $validatedData['picture'] = $request->file('picture')->store('mitra-images');
         $validatedData['role'] = 2;
-
+        
         Seller::create($validatedData);
         return redirect()->route('admin');
     }
