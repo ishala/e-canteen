@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Raleway&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    background-color: white;    
+}
+
+.navbar-brand {
+    width: 200px;
+    height: 230px;
+}
+
+.navbar {
+    background-color: #EBFFEC;
+    max-height: 150px;
+    overflow: hidden;
+}
+
+.nav-link{
+    font-size: 25px;
+}
+
+.judul {
+    margin-left: 90px;
+    margin-top: 35px;
+    font-size: 25px;
+}
+
+.button1 {
+    position: relative;
+    margin-left: 285px;
+    margin-top: -100px;
+}
+
+.ganti {
+    margin-top: 45px;
+    margin-left: 5px;
+}
+
+.kotak {
+    height: 200px;
+    width: 400px;
+}
+
+.label {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.label input {
+    width: 60px;
+    font-size: 24px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+.label button {
+    
+    margin-right: 3px;
+    margin-left: 3px;
+    width: 40px;
+    height: 40px;  
+    outline: none;
+    color: #14A033;
+    border: 1px;
+    border-style: solid;
+    border-radius: 25px;
+    border-color: #14A033;
+    background-color: #ffffff;
+}
+
+.label button:hover {
+    color: #EBFFEC;
+    background-color: #039323;
+}
+
+.button3 {
+    margin-left: 25px;
+    width: 300px;
+}
+
+.cardd {
+    margin-right: 250px;
+}
+
+.kanan {
+    margin-left: -10px;
+}
+
+.foto {
+    border-radius: 25px;
+}
+
+.card-title {
+    color: #000;
+font-size: 18px;
+font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.uang {
+    color: #000;
+font-size: 15px;
+font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}

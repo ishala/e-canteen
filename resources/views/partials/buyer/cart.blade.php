@@ -10,7 +10,7 @@
 </style>
 
 <div class="mt-5">
-    <form action="{{ route('buyer.payment-process') }}" method="POST" id="transactions">
+    <form action="{{ route('buyer.select-table-process') }}" method="POST" id="transactions">
         @csrf
         @foreach ($transaction as $trans)
             <div class="container border border-3 rounded-3 mb-4">
@@ -43,10 +43,9 @@
                 </div>
             </div>
         @endforeach
-    </form>
 </div>
+</form>
 
-{{-- <input type="hidden" value="{{ $transaction }}" name="transaction"> --}}
 <button type="submit" class="btn btn-warning btn-block btn-lg tombol-pesan" id="buat-pesanan">
     <p class="text-center ms-3">Buat Pesanan</p>
 </button>
@@ -58,7 +57,7 @@
         // Ambil referensi ke elemen form
         let form = $('#transactions');
         // Setel aksi form ke URL yang diinginkan
-        form.attr('action', "{{ route('buyer.payment-process') }}");
+        form.attr('action', "{{ route('buyer.select-table-process') }}");
         // Kirimkan formulir secara manual
         form.submit();
     });

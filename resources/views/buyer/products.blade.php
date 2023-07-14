@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ $style }}">
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-        
+
     <script>
         $(document).ready(function() {
             let category = $('#dataCategory').data('value');
@@ -81,8 +81,11 @@
                             aria-current="page" href="{{ route('buyer.search-products') }}">Cari Produk</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ $title == 'Pembeli: Keranjang' ? 'text-danger fw-bold' : 'text-dark' }}"
-                            aria-current="page" href="{{ route('buyer.cart') }}">Keranjang</a>
+                        <a @if ($title == 'Pembeli: Keranjang') class="nav-link text-danger fw-bold" @endif
+                            @if ($title == 'Pembeli: Pilih Meja') class="nav-link text-danger fw-bold" @endif
+                            @if ($title == 'Pembeli: Konfirmasi Pesanan') class="nav-link text-danger fw-bold" @endif
+                            class="nav-link text-dark" aria-current="page"
+                            href="{{ route('buyer.cart') }}">Keranjang</a>
                     </li>
                 </ul>
             </div>
@@ -111,6 +114,13 @@
         @if ($title == 'Pembeli: Cari Produk')
             @include('partials.buyer.search_product')
         @endif
+        @if ($title == 'Pembeli: Pilih Meja')
+            @include('partials.buyer.select_table')
+        @endif
+        @if ($title == 'Pembeli: Konfirmasi Pesanan')
+            @include('partials.buyer.confirm_orders')
+        @endif
+
     </div>
 
 

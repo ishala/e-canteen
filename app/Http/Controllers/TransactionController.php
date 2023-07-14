@@ -17,7 +17,7 @@ class TransactionController extends Controller
     public function index()
     {
 
-        return view('/buyer/payment', [
+        return view('partials/buyer/payment', [
             'title' => 'Pembeli: Pembayaran',
             'style' => '/styles/user/payment.css'
         ]);
@@ -106,7 +106,6 @@ class TransactionController extends Controller
     {
         $akun = $request->cookie('account');
         $akun = unserialize($akun);
-
         $product = $product->with('seller')->get();
 
         //untuk cart
@@ -124,12 +123,39 @@ class TransactionController extends Controller
         ]);
     }
 
+    public function selectTable(Request $request){
+        $transact = $request->session()->get('cartIds');
+        $transact = explode(',', $transact);
+        
+        return view('buyer/products', [
+            'title' => 'Pembeli: Pilih Meja',
+            'style' => '/styles/buyer/products.css',
+            'transaction' => $transact
+            // 'products' => $product,
+        ]);
+
+        //return redirect()->route('buyer.cart');
+    }
+
+    public function selectTableProcess(Request $request){
+        $transact = $request->input('productChecked');
+
+        if($transact){
+            $transact = implode(',', $transact);
+            $request->session()->put('cartIds', $transact);
+            return redirect()->route('buyer.select-table');
+        }
+        return redirect()->route('buyer.cart');
+    }
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Transaction $transaction)
+    public function confirmOrders(Transaction $transaction)
     {
-        //
+        return view('buyer/products', [
+            'title' => 'Pembeli: Konfirmasi Pesanan',
+            'style' => '/styles/buyer/confirm-orders.css',
+        ]);
     }
 
     /**

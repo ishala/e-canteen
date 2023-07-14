@@ -75,8 +75,11 @@ Route::get('/buyer/products', [ProductController::class, 'show'])->name('buyer.a
 Route::get('/buyer/cart', [TransactionController::class, 'show'])->name('buyer.cart'); 
 Route::get('/buyer/payment', [TransactionController::class, 'index'])->name('buyer.payment');
 Route::get('/buyer/products/search', [BuyerController::class, 'search'])->name('buyer.search-products');
+Route::get('/buyer/products/select-table', [TransactionController::class, 'selectTable'])->name('buyer.select-table');
+Route::get('/buyer/products/confirm-orders', [TransactionController::class, 'confirmOrders'])->name('buyer.confirm-orders');
 
 Route::get('/buyer/cart/delete/{transact}', [TransactionController::class, 'delete'])->name('buyer.cart-delete'); 
+Route::post('/buyer/products/select-table', [TransactionController::class, 'selectTableProcess'])->name('buyer.select-table-process');
 Route::post('/buyer/cart', [TransactionController::class, 'create'])->name('buyer.cart-process');
 Route::post('buyer/payment', [TransactionController::class, 'store'])->name('buyer.payment-process');
 Route::post('/buyer', [ProductController::class, 'index'])->name('buyer');
