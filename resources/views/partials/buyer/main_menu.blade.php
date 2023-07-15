@@ -64,8 +64,7 @@
                 <p class="card-text">Dari Toko :</p>
                 <p class="card-text">{{ $product->seller->name }}</p>
                 <div class="d-flex flex-row-reverse">
-                    <a href="{{ route('buyer.detail-product', $product) }}"
-                        class="btn btn-light text-danger">Pesan</a>
+                    <a href="{{ route('buyer.detail-product', $product) }}" class="btn btn-light text-danger">Pesan</a>
                 </div>
             </div>
         </div>

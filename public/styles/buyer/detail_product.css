@@ -75,3 +75,18 @@ button{
 .kuantitas{
     height: 40px;
 }
+
+.navbar-brand {
+    width: 200px;
+    height: 230px;
+}
+
+.navbar {
+    background-color: #ebffec;
+    max-height: 150px;
+    overflow: hidden;
+}
+
+.nav-link{
+    font-size: 25px;
+}

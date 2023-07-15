@@ -27,7 +27,7 @@ form {
 .logo {
     width: 350px;
     margin-top: 50px;
-    margin-left: 500px;
+    margin-left: 520px;
 }
 .email {
     height: 30px;
@@ -48,7 +48,12 @@ form {
     border-radius: 25px;
 }
 
-button {
+.hide {
+    background-color: white;
+    margin-left: 20px;
+}
+
+.button {
     width: 80%;
     height: 50px;
     border-radius: 50px;

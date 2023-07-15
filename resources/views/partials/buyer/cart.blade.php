@@ -47,7 +47,7 @@
 </form>
 
 <button type="submit" class="btn btn-warning btn-block btn-lg tombol-pesan" id="buat-pesanan">
-    <p class="text-center ms-3">Buat Pesanan</p>
+    <p class="text-center ms-1">Buat Pesanan</p>
 </button>
 
 

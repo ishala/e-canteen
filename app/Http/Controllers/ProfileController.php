@@ -17,9 +17,10 @@ class ProfileController extends Controller
             'style' => '/styles/profile/edit-profile.css'
         ]);
     }
-
+    
     public function getLandingPage(){
         return view('/others/landing_page', [
+            'title' => 'Hello! Selamat Datang di E-Canteen',
             'style' => '/styles/others/landing-page.css'
         ]);
     }

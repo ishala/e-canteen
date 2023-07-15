@@ -84,6 +84,7 @@
                         <a @if ($title == 'Pembeli: Keranjang') class="nav-link text-danger fw-bold" @endif
                             @if ($title == 'Pembeli: Pilih Meja') class="nav-link text-danger fw-bold" @endif
                             @if ($title == 'Pembeli: Konfirmasi Pesanan') class="nav-link text-danger fw-bold" @endif
+                            @if ($title == 'Pembeli: Pembayaran') class="nav-link text-danger fw-bold" @endif
                             class="nav-link text-dark" aria-current="page"
                             href="{{ route('buyer.cart') }}">Keranjang</a>
                     </li>

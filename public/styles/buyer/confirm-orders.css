@@ -38,6 +38,17 @@ body{
     margin-top: -100px;
 }
 
+.kotak > .card-body img{
+    border-radius: 15px;
+}
+
+.kotak > .card-body .card-title{
+    font-size: 25px;
+}
+.kotak > .card-body .card-text{
+    font-size: 20px;
+}
+
 .ganti {
     margin-top: 45px;
     margin-left: 5px;
@@ -122,4 +133,21 @@ font-family: Poppins;
 font-style: normal;
 font-weight: 600;
 line-height: normal;
+}
+
+.kotak {
+    overflow-y: auto;
+    max-height: 700px;
+    height: 400px;
+    max-width: 650px;
+    width: 1000px;
+}
+
+.nomor-meja{
+    font-size: 25px;
+}
+
+#pay{
+    height: 50px;
+    padding-top: 13px;
 }

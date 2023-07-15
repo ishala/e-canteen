@@ -69,7 +69,7 @@ class ProductController extends Controller
         $akun = unserialize($akun);
         return view('/buyer/products', [
             'title' => 'Pembeli: Detail Produk',
-            'style' => '/styles/buyer/products.css',
+            'style' => '/styles/buyer/detail_product.css',
             'product' => $product
         ]);
     }
