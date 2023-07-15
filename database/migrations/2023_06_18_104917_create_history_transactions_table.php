@@ -16,6 +16,7 @@ return new class extends Migration
             $table->bigInteger('total_price');
             $table->integer('num_table');
             $table->text('all_products');
+            $table->string('payment')->nullable();
             $table->text('trans_id');
             $table->timestamps();
         });
