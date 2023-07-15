@@ -3,12 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BuyerController;
+use App\Http\Controllers\HistoryTransactionController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransactionController;
+use App\Models\HistoryTransaction;
 use App\Models\Product;
 
 /*
@@ -81,6 +83,7 @@ Route::get('/buyer/order/{product:id}', [ProductController::class, 'show'])->nam
 Route::get('/buyer/products/select-table', [TransactionController::class, 'selectTable'])->name('buyer.select-table');
 Route::get('/buyer/cart/delete/{transact}', [TransactionController::class, 'delete'])->name('buyer.cart-delete'); 
 Route::get('/buyer/products/confirm-orders', [TransactionController::class, 'confirmOrders'])->name('buyer.confirm-orders');
+Route::get('/buyer/products/history-orders', [HistoryTransactionController::class, 'index'])->name('buyer.history-orders');
 
 Route::post('/buyer/products/confirm-orders', [TransactionController::class, 'confirmOrdersProcess'])->name('buyer.confirm-orders-process');
 Route::post('/buyer/products/select-table', [TransactionController::class, 'selectTableProcess'])->name('buyer.select-table-process');

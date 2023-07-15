@@ -88,6 +88,11 @@
                             class="nav-link text-dark" aria-current="page"
                             href="{{ route('buyer.cart') }}">Keranjang</a>
                     </li>
+                    <li class="nav-item">
+                        <a @if ($title == 'Pembeli: Pesanan') class="nav-link text-danger fw-bold" @endif
+                            class="nav-link text-dark" aria-current="page"
+                            href="{{ route('buyer.history-orders') }}">Pesanan</a>
+                    </li>
                 </ul>
             </div>
             <div class="me-5">
@@ -121,7 +126,9 @@
         @if ($title == 'Pembeli: Konfirmasi Pesanan')
             @include('partials.buyer.confirm_orders')
         @endif
-
+        @if ($title == 'Pembeli: Pesanan')
+            @include('partials.buyer.history_orders')
+        @endif
     </div>
 
 

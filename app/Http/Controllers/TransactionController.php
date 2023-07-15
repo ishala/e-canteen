@@ -21,7 +21,7 @@ class TransactionController extends Controller
         //untuk cart
         $transaction = $transaction->with('product')
             ->where('buyer_id', $akun->id)
-            ->where('status', false)
+            ->where('paid', false)
             ->get();
 
         $transaction = collect($transaction);
@@ -33,7 +33,7 @@ class TransactionController extends Controller
         ]);
     }
 
-    public function create(Request $request, Transaction $transaction)
+    public function create(Request $request, Transaction $transaction, Product $product)
     {
         $akun = $request->cookie('account');
         $akun = unserialize($akun);
@@ -44,8 +44,14 @@ class TransactionController extends Controller
             'product_id' => 'required'
         ]);
 
+        //mengambil nilainya saja dari hasil pencarian di dalam tabel product
+        $sellerId = $product->select('seller_id')
+            ->where('id', $validatedData['product_id'])
+            ->value('seller_id');
+
         $validatedData['buyer_id'] = $akun->id;
-        $validatedData['status'] = false;
+        $validatedData['seller_id'] = $sellerId;
+        $validatedData['paid'] = false;
 
         //ubah ke dalam bentuk int
         $validatedData['price'] = intval($validatedData['price']);
@@ -179,7 +185,7 @@ class TransactionController extends Controller
             $allTransId[] = $transact['id'];
             $allProductsName[] = $transact['product']['name'];
         }
-        
+
         //mengubah array menjadi string agar bisa masuk ke dalam kolom db
         $allProductsName = implode(', ', $allProductsName);
         $allTransId = implode(', ', $allTransId);
@@ -197,7 +203,7 @@ class TransactionController extends Controller
 
         $allTransId = explode(', ', $allTransId);
 
-        Transaction::whereIn('id', $allTransId)->update(['status' => true]);
+        Transaction::whereIn('id', $allTransId)->update(['paid' => true, 'status' => 'waiting']);
 
         return redirect()->route('buyer.cart');
     }
