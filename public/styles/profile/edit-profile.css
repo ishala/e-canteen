@@ -17,8 +17,13 @@ body {
     background-color: #EBFFEC;
 }
 
+img {
+    width: 130px;
+    margin-top: 30px;
+}
+
 .container {
-    height: 500px;
+    height: 570px;
     border-radius: 20px;
 }
 
@@ -37,8 +42,17 @@ body {
 
 .btn {
     font-family: 'Poppins';
-    font-style: normal;
     font-weight: 600;
     font-size: 15px;
     color: #EBFFEC;
+    width: 300px;
 }
+
+
+hr {
+    margin-left: 315px;
+    background-color: grey;
+    size: 4px;
+    width: 40%;
+}
+

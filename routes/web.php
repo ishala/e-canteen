@@ -29,7 +29,10 @@ Route::get('/', [ProfileController::class, 'getLandingPage']);
 
 //profile
 Route::get('/profile', [ProfileController::class, 'index']); 
-Route::get('/edit-profile', [ProfileController::class, 'update']); 
+Route::get('/edit-profile/seller/{role}/{id}', [ProfileController::class, 'update'])->name('seller.edit-profile'); 
+Route::get('/edit-profile/buyer/{role}/{id}', [ProfileController::class, 'update'])->name('buyer.edit-profile'); 
+
+Route::post('/edit-profile/process', [ProfileController::class, 'updateProcess'])->name('account.edit-profile-process'); 
 
 //Login
 Route::get('/login', [LoginController::class, 'index'])->name('account.login'); 
@@ -45,7 +48,7 @@ Route::post('/register/regist', [RegistController::class, 'addRole']);
 
 
 //Admin
-Route::get('/admin', [AdminController::class, 'index'])->name('admin'); 
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::get('/admin/add-mitra', [AdminController::class, 'create'])->name('admin.add-mitra'); 
 Route::get('/admin/detail-mitra/{seller:id}', [AdminController::class, 'show'])->name('admin.detail-mitra');  
 Route::get('/admin/detail-mitra/{seller:id}/edit', [AdminController::class, 'edit'])->name('admin.edit-mitra'); 

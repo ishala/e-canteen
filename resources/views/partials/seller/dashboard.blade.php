@@ -1,4 +1,4 @@
-<p class="fs-3 fw-bold mt-4 ms-5">Selamat Datang, {{ $account->name }}!</p>
+<p class="fs-3 fw-bold mt-4 ms-5">Selamat Datang, {{ $account->owner }}!</p>
     <div class="container-fluid px-5 mt-5">
         <div class="row d-flex justify-content-around">
             <div class="container data-penjualan col">

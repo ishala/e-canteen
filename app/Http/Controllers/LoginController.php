@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -37,27 +38,22 @@ class LoginController extends Controller
                 ->first();
 
             if (!empty($account)) {
+                //Kalo akunnya admin
+                if ($account->role == 1) {
+                    return redirect()->route('admin')->cookie('account', serialize($account), 60, '/admin');
+                }
+                //Kalo akunnya seller
+                else if ($account->role == 2) {
+                    return redirect()->route('seller')->cookie('account', serialize($account), 60, '/seller');;
+                }
+                //kalo akunnya buyer
+                else if ($account->role == 3) {
+                    return redirect()->route('buyer')->cookie('account', serialize($account), 60, '/buyer');;
+                }
                 break;
             }
         }
-
-        //Kalo akunnya admin
-        if ($account->role == 1) {
-            $account = serialize($account);
-            return redirect()->route('admin')->cookie('account', $account, 60, '/admin');
-        }
-        //Kalo akunnya seller
-        else if ($account->role == 2) {
-            $account = serialize($account);
-            return redirect()->route('seller')->cookie('account', $account, 60, '/seller');;
-        }
-        //kalo akunnya buyer
-        else if ($account->role == 3) {
-            $account = serialize($account);
-            return redirect()->route('buyer')->cookie('account', $account, 60, '/buyer');;
-        } else {
-            return back()->with('loginError', 'Failed');
-        }
+        return back()->with('loginError', 'Failed');
     }
 
     public function forgotPw()

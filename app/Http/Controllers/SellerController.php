@@ -39,11 +39,14 @@ class SellerController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
+        $akun = $request->cookie('account');
+        $akun = unserialize($akun);
         return view('seller/main_page', [
             'title' => 'Penjual: Tambah Produk',
-            'style' => '/styles/seller/all-products.css'
+            'style' => '/styles/seller/all-products.css',
+            'account' => $akun
         ]);
     }
 
@@ -61,7 +64,7 @@ class SellerController extends Controller
             'description' => 'required',
             'picture' => 'image|file|max:10240'
         ]);
-        
+
         $validatedData['picture'] = $request->file('picture')->store('product-images');
         $validatedData['seller_id'] = $akun->id;
 
@@ -96,7 +99,8 @@ class SellerController extends Controller
             'style' => '/styles/seller/main-page.css',
             'products' => $product,
             'category' => $kategori,
-            'count' => $totalProduk
+            'count' => $totalProduk,
+            'account' => $akun
         ]);
     }
 
@@ -110,6 +114,7 @@ class SellerController extends Controller
             'title' => 'Penjual: Cari Produk',
             'style' => '/styles/seller/search-product.css',
             'products' => $product,
+            'account' => $akun
         ]);
     }
 
@@ -127,19 +132,23 @@ class SellerController extends Controller
             'dataProduct' => $dataProduct,
             'dataAll' => $dataAll
         ];
-        
+
         return response()->json($data);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Seller $seller, Product $product)
+    public function edit(Seller $seller, Product $product, Request $request)
     {
+        $akun = $request->cookie('account');
+        $akun = unserialize($akun);
+
         return view('seller/main_page', [
             'title' => 'Penjual: Edit Produk',
             'style' => '/styles/seller/main-page.css',
-            'product' => $product
+            'product' => $product,
+            'account' => $akun
         ]);
     }
 
@@ -148,6 +157,9 @@ class SellerController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        $akun = $request->cookie('account');
+        $akun = unserialize($akun);
+
         $validatedData = $request->validate([
             'name' => 'required',
             'category' => 'required|max:1',
@@ -155,9 +167,9 @@ class SellerController extends Controller
             'description' => 'required',
             'picture' => 'image|file|max:10240'
         ]);
-        
-        if($request->file('picture')){
-            if($request->oldPicture){
+
+        if ($request->file('picture')) {
+            if ($request->oldPicture) {
                 Storage::delete($request->oldPicture);
             }
             $validatedData['picture'] = $request->file('picture')->store('product-images');
@@ -178,7 +190,7 @@ class SellerController extends Controller
 
         $product = $product->find($productId); // Temukan produk berdasarkan ID
         if ($product) {
-            if($product->picture){
+            if ($product->picture) {
                 Storage::delete($product->picture);
             }
             $product->delete(); // Hapus produk jika ditemukan

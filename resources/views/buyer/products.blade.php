@@ -96,7 +96,7 @@
                 </ul>
             </div>
             <div class="me-5">
-                <a href="#">
+                <a href="{{ route('buyer.edit-profile', ['role' => $account->role, 'id' => $account->id]) }}">
                     <img src="/assets/logo-profile.png" alt="Profile Picture"
                         style="width: 45px; height: 45px; border-radius: 50px" /></a>
             </div>

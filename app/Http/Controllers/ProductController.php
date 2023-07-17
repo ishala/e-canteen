@@ -41,7 +41,8 @@ class ProductController extends Controller
                 'products' => $product,
                 'category' => $kategori,
                 'count' => $totalProduk,
-                'bestSeller' => $bestSeller
+                'bestSeller' => $bestSeller,
+                'account' => $akun
             ]);
         }
     }

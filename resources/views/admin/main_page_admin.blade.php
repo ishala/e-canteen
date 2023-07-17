@@ -46,7 +46,10 @@
     <!--Judul-->
     <div class="container-fluid atas d-flex flex-row justify-content-between bg-light">
         <img src="/assets/logo-e-canteen.png" alt="" class="plus">
-        <p class="me-4">Admin</p>
+        <p class="me-5">Admin</p>
+        <a href="{{ route('account.login') }}" class="text-decoration-none">
+            <p class="mt-4 me-2 fs-5 fw-medium">Logout</p>
+        </a>
     </div>
 
     <!--Tombol-->
@@ -88,8 +91,8 @@
                             <p class="fs-4 text-center" style="color: grey;">Tidak Ada Gambar</p>
                         @endif
                         <h5 class="card-title fw-bold">{{ $seller->name }}</h5>
-                        <p class="card-text">Pengunjung Hari Ini </p>
-                        <p class="card-text">15 Orang </p>
+                        <p class="card-text">Pemilik : </p>
+                        <p class="card-text">{{ $seller->owner }}</p>
                         <div class="d-flex flex-row">
                             <input type="checkbox" id="check" name="sellerChecked[]" value="{{ $seller->id }}">
                             <a href="{{ route('admin.detail-mitra', $seller) }}"

@@ -52,15 +52,14 @@
                 form.unbind('submit').submit();
             });
 
-            $('#formFile').change(function(){
-                if(this.files && this.files[0]){
+            $('#formFile').change(function() {
+                if (this.files && this.files[0]) {
                     let fileReader = new FileReader();
                     fileReader.onload = function(e) {
                         $('#gambar').attr('src', e.target.result);
                     }
                     fileReader.readAsDataURL(this.files[0]);
-                }
-                else {
+                } else {
                     $('#gambar').attr('src', '/assets/empty-picture.png');
                 }
             })
@@ -98,6 +97,11 @@
                     </li>
                     <li class="nav-item ms-4">
                         <a class="nav-link fs-5 text-dark" href="#">Pendapatan</a>
+                    </li>
+                    <li class="nav-item" style="margin-left: 350px;">
+                        <a href="{{ route('seller.edit-profile', ['role' => $account->role, 'id' => $account->id]) }}">
+                            <img src="/assets/profile.png" alt="" style="width:70px;">
+                        </a>
                     </li>
                 </ul>
             </div>
