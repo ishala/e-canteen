@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway&display=swap');
-@import url('all-products.css');
-@import url('add-product.css');
-@import url('detail-product.css');
+
 
 * {
     font-family: 'Poppins', sans-serif;
@@ -25,11 +23,8 @@ body {
 }
 
 .navbar-brand{
-    width: 200px;
-}
-
-.profile {
-    height: 40px;
+    width: 180px;
+    padding-left: 15px;
 }
 
 .navbar{
@@ -39,6 +34,15 @@ body {
     width: 100%;
 }
 
+.nav-link{
+    font-size: 20px;
+}
+
+.profile {
+    height: 40px;
+}
+
+
 .data-penjualan{
     background-color: #C7E8CA;
     margin-right: 15px;
@@ -47,6 +51,5 @@ body {
 }
 
 .navigasi{
-    margin-left: 30px;
     padding-top: 10px;
 }

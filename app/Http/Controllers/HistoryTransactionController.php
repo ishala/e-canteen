@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Product;
+use App\Models\Transaction;
+use Illuminate\Http\Request;
 use App\Models\HistoryTransaction;
 use App\Http\Requests\StoreHistoryTransactionRequest;
 use App\Http\Requests\UpdateHistoryTransactionRequest;
-use App\Models\Product;
-use App\Models\Transaction;
+
 
 class HistoryTransactionController extends Controller
 {
@@ -56,9 +58,26 @@ class HistoryTransactionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(HistoryTransaction $historyTransaction)
+    public function show(Request $request, HistoryTransaction $historyTransaction)
     {
-        //
+        $akun = $request->cookie('account');
+        $akun = unserialize($akun);
+        return view('seller/main_page', [
+            'title' => 'Penjual: Lihat Pesanan',
+            'style' => '/styles/seller/incoming-orders.css',
+            'account' => $akun
+        ]);
+    }
+
+    public function showDetail(Request $request, HistoryTransaction $historyTransaction)
+    {
+        $akun = $request->cookie('account');
+        $akun = unserialize($akun);
+        return view('seller/main_page', [
+            'title' => 'Penjual: Detail Pesanan',
+            'style' => '/styles/seller/detail-orders.css',
+            'account' => $akun
+        ]);
     }
 
     /**

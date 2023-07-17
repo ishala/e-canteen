@@ -81,22 +81,27 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item mb-2">
-                        <a class="nav-link fs-5 {{ $title == 'Dashboard Mitra' ? 'text-danger fw-bold' : 'text-dark' }}"
+                    <li class="nav-item mt-1">
+                        <a class="nav-link {{ $title == 'Dashboard Mitra' ? 'text-danger fw-bold' : 'text-dark' }}"
                             aria-current="page" href="{{ route('seller') }}">Dashboard</a>
                     </li>
-                    <li class="nav-item ms-4">
-                        <a @if ($title == 'Penjual: Tampil Produk') class="nav-link fs-5 text-danger fw-bold" @endif
-                            @if ($title == 'Penjual: Tambah Produk') class="nav-link fs-5 text-danger fw-bold" @endif
-                            @if ($title == 'Penjual: Edit Produk') class="nav-link fs-5 text-danger fw-bold" @endif
-                            class="nav-link fs-5" href="{{ route('seller.all-products') }}">Semua Produk</a>
+                    <li class="nav-item mt-1">
+                        <a @if ($title == 'Penjual: Tampil Produk') class="nav-link  text-danger fw-bold" @endif
+                            @if ($title == 'Penjual: Tambah Produk') class="nav-link  text-danger fw-bold" @endif
+                            @if ($title == 'Penjual: Edit Produk') class="nav-link  text-danger fw-bold" @endif
+                            class="nav-link " href="{{ route('seller.all-products') }}">Semua Produk</a>
                     </li>
-                    <li class="nav-item ms-4">
-                        <a @if ($title == 'Penjual: Cari Produk') class="nav-link fs-5 text-danger fw-bold" @endif
-                            class="nav-link fs-5 text-dark" href="{{ route('seller.search-products') }}">Cari Produk</a>
+                    <li class="nav-item mt-1">
+                        <a @if ($title == 'Penjual: Cari Produk') class="nav-link  text-danger fw-bold" @endif
+                            class="nav-link text-dark" href="{{ route('seller.search-products') }}">Cari Produk</a>
                     </li>
-                    <li class="nav-item ms-4">
-                        <a class="nav-link fs-5 text-dark" href="#">Pendapatan</a>
+                    <li class="nav-item mt-1">
+                        <a class="nav-link  text-dark" href="#">Pendapatan</a>
+                    </li>
+                    <li class="nav-item mt-1">
+                        <a @if ($title == 'Penjual: Lihat Pesanan') class="nav-link  text-danger fw-bold" @endif
+                            @if ($title == 'Penjual: Detail Pesanan') class="nav-link  text-danger fw-bold" @endif
+                            class="nav-link text-dark" href="{{ route('seller.incoming-orders') }}">Pesanan</a>
                     </li>
                     <li class="nav-item" style="margin-left: 350px;">
                         <a href="{{ route('seller.edit-profile', ['role' => $account->role, 'id' => $account->id]) }}">
@@ -122,6 +127,12 @@
     @endif
     @if ($title == 'Penjual: Cari Produk')
         @include('partials.seller.search_product')
+    @endif
+    @if ($title == 'Penjual: Lihat Pesanan')
+        @include('partials.seller.incoming_orders')
+    @endif
+    @if ($title == 'Penjual: Detail Pesanan')
+        @include('partials.seller.detail_orders')
     @endif
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">

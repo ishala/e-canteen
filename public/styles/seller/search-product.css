@@ -18,13 +18,24 @@
     object-fit: cover;
 }
 
+.navbar-brand{
+    width: 180px;
+    padding-left: 15px;
+}
+
 .navbar{
     background-color: #EBFFEC;
     max-height: 150px;
     overflow: hidden;
+    width: 100%;
 }
-.navbar-brand{
-    width: 200px;
+
+.nav-link{
+    font-size: 20px;
+}
+
+.profile {
+    height: 40px;
 }
 
 .bungkus {

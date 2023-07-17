@@ -68,7 +68,8 @@ Route::get('/seller/all-products/search', [SellerController::class, 'search'])->
 Route::get('/seller/all-products/add-product', [SellerController::class, 'create'])->name('seller.add-product');
 Route::get('/seller/all-products/{product:id}/edit-product', [SellerController::class, 'edit'])->name('seller.edit-product');
 Route::get('/seller/revenue', [SellerController::class, 'getRevenue'])->name('seller.revenue');
-Route::get('/seller/confirm-orders', [SellerController::class, 'confirmOrders'])->name('seller.confirm-orders');
+Route::get('/seller/incoming-orders', [HistoryTransactionController::class, 'show'])->name('seller.incoming-orders');
+Route::get('/seller/incoming-orders/detail-orders', [HistoryTransactionController::class, 'showDetail'])->name('seller.detail-orders');
 
 Route::post('/seller/all-products', [SellerController::class, 'show'])->name('seller.all-products');
 Route::post('/seller/all-products/add-product', [SellerController::class, 'store'])->name('seller.add-product');

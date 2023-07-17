@@ -45,7 +45,7 @@ class SellerController extends Controller
         $akun = unserialize($akun);
         return view('seller/main_page', [
             'title' => 'Penjual: Tambah Produk',
-            'style' => '/styles/seller/all-products.css',
+            'style' => '/styles/seller/add-product.css',
             'account' => $akun
         ]);
     }
@@ -96,7 +96,7 @@ class SellerController extends Controller
 
         return view('seller/main_page', [
             'title' => 'Penjual: Tampil Produk',
-            'style' => '/styles/seller/main-page.css',
+            'style' => '/styles/seller/all-products.css',
             'products' => $product,
             'category' => $kategori,
             'count' => $totalProduk,
@@ -146,7 +146,7 @@ class SellerController extends Controller
 
         return view('seller/main_page', [
             'title' => 'Penjual: Edit Produk',
-            'style' => '/styles/seller/main-page.css',
+            'style' => '/styles/seller/detail-product.css',
             'product' => $product,
             'account' => $akun
         ]);
