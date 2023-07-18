@@ -65,13 +65,17 @@ class ProductController extends Controller
      */
     public function show(Request $request, Product $product)
     {
+        $akun = $request->cookie('account');
+        $akun = unserialize($akun);
+
         //Ngambil data dari session dengan nama key = akun
         $akun = $request->cookie('account');
         $akun = unserialize($akun);
         return view('/buyer/products', [
             'title' => 'Pembeli: Detail Produk',
             'style' => '/styles/buyer/detail_product.css',
-            'product' => $product
+            'product' => $product,
+            'account' => $akun
         ]);
     }
 

@@ -24,6 +24,9 @@ class BuyerController extends Controller
      */
     public function search(Request $request, Product $product, Seller $seller)
     {
+        $akun = $request->cookie('account');
+        $akun = unserialize($akun);
+
         $product = $product->with('seller')->get();
         $seller = $seller->all();
 
@@ -31,7 +34,8 @@ class BuyerController extends Controller
             'title' => 'Pembeli: Cari Produk',
             'style' => '/styles/buyer/search_product.css',
             'products' => $product,
-            'sellers' => $seller
+            'sellers' => $seller,
+            'account' => $akun
         ]);
     }
 

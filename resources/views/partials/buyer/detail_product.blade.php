@@ -53,6 +53,15 @@
                 // Kirimkan formulir secara manual
                 form.submit();
             })
+
+            $('.beli').click(function() {
+                // Ambil referensi ke elemen form
+                var form = $('#cart');
+                // Setel aksi form ke URL yang diinginkan
+                form.attr('action', "{{ route('buyer.select-table-process') }}");
+                // Kirimkan formulir secara manual
+                form.submit();
+            })
         })
     </script>
 </head>
@@ -80,9 +89,6 @@
                     <p class="fw-bold fs-5">Rp.
                         {{ number_format($product->price, 0, ',', '.') }}</p>
                 </div>
-                <div class="col-6">
-                    <img src="/assets/favorite_icon.png" class="favorite" alt="">
-                </div>
             </div>
             <p class="deskripsi"> {{ $product->description }}</p>
 
@@ -100,6 +106,12 @@
         <input type="hidden" name="quantity" id="quantity">
         <input type="hidden" name="product_id" value="{{ $product->id }}">
         <input type="hidden" name="price" value="{{ $product->price }}">
+    </form>
+
+    <form action="{{ route('buyer.select-table-process') }}" id="table" method="POST">
+        @csrf
+        <input type="hidden" name="quantity" id="quantity">
+        <input type="hidden" name="product_id" value="{{ $product->id }}">
     </form>
 
 
