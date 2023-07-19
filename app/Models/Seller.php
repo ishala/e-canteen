@@ -23,6 +23,10 @@ class Seller extends Model
     }
 
     public function product(){
-        return $this->hasMany(Product::class, 'product_id', 'id');
+        return $this->hasMany(Product::class, 'seller_id', 'id');
+    }
+
+    public function transact(){
+        return $this->hasMany(Transaction::class, 'seller_id', 'id');
     }
 }

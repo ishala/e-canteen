@@ -53,7 +53,9 @@
                                     Ada</button>
                             @endif
                             @if ($transact->status == 'done')
+                            <a href="{{ route('buyer.detail-product', $transact->product) }}">
                                 <button type="button" class="btn btn-danger rounded-pill">Pesan Lagi</button>
+                            </a>
                             @endif
                         </div>
                     </div>

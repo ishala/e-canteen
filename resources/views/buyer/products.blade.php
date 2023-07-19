@@ -85,6 +85,7 @@
                             @if ($title == 'Pembeli: Pilih Meja') class="nav-link text-danger fw-bold" @endif
                             @if ($title == 'Pembeli: Konfirmasi Pesanan') class="nav-link text-danger fw-bold" @endif
                             @if ($title == 'Pembeli: Pembayaran') class="nav-link text-danger fw-bold" @endif
+                            @if ($title == 'Pembeli: Produk Penjual') class="nav-link text-danger fw-bold" @endif
                             class="nav-link text-dark" aria-current="page"
                             href="{{ route('buyer.cart') }}">Keranjang</a>
                     </li>
@@ -128,6 +129,9 @@
         @endif
         @if ($title == 'Pembeli: Pesanan')
             @include('partials.buyer.history_orders')
+        @endif
+        @if ($title == 'Pembeli: Produk Penjual')
+            @include('partials.buyer.seller_products')
         @endif
     </div>
 

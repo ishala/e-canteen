@@ -24,10 +24,8 @@
 
 
 .heading {
-    font-size: 40px;
-    margin-top: 35px;
-    margin-bottom: 30px;
-    padding-left: 20px
+    font-size: 30px;
+    margin: 35px 0 30px 5px;
 }
 
 .card {
@@ -129,9 +127,12 @@ img {
     display: inline-block;
     border-radius: 6px;
     box-sizing: border-box;
-    border: 2px solid lightgrey;
     cursor: pointer;
     margin: 12px 25px 12px 0px
+}
+
+.radio[data-value="shopeepay"]{
+    width: 100px;
 }
 
 .radio:hover {
@@ -146,4 +147,9 @@ img {
 .label-radio {
     font-weight: bold;
     color: #000000
+}
+
+button[type="submit"]{
+    border-radius: 25px;
+    margin-left: 35%;
 }

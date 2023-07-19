@@ -96,7 +96,8 @@
                             class="nav-link text-dark" href="{{ route('seller.search-products') }}">Cari Produk</a>
                     </li>
                     <li class="nav-item mt-1">
-                        <a class="nav-link  text-dark" href="#">Pendapatan</a>
+                        <a @if ($title == 'Penjual: Pendapatan') class="nav-link text-danger fw-bold" @endif
+                        class="nav-link  text-dark" href="{{ route('seller.revenue') }}">Pendapatan</a>
                     </li>
                     <li class="nav-item mt-1">
                         <a @if ($title == 'Penjual: Lihat Pesanan') class="nav-link  text-danger fw-bold" @endif
@@ -133,6 +134,9 @@
     @endif
     @if ($title == 'Penjual: Detail Pesanan')
         @include('partials.seller.detail_orders')
+    @endif
+    @if ($title == 'Penjual: Pendapatan')
+        @include('partials.seller.total_income')
     @endif
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">

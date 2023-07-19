@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreSellerRequest;
 use App\Http\Requests\UpdateSellerRequest;
+use App\Models\Transaction;
 
 class SellerController extends Controller
 {
@@ -19,12 +20,22 @@ class SellerController extends Controller
         if ($request->cookie() != null) {
             $akun = $request->cookie('account');
             $akun = unserialize($akun);
+            $totalIncome = 0;
 
             //Ngambil data produk yang punya seller_id sama dengan id akun 
             $myProduct = $product->where('seller_id', $akun->id)->get();
 
+            $totalOrders = Transaction::where('seller_id', $akun->id)->get()->count();
             //Ngitung banyak produk
             $totalProduct = $product->where('seller_id', $akun->id)->get()->count();
+
+            $allIncome = Transaction::select('price')->where('seller_id', $akun->id)
+                                    ->where('status', 'done')
+                                    ->get();
+            foreach($allIncome as $income){
+                $totalIncome += $income->price;
+            }
+            
 
             return view('seller/main_page', [
                 'title' => 'Dashboard Mitra',
@@ -32,6 +43,8 @@ class SellerController extends Controller
                 'account' => $akun,
                 'products' => $myProduct,
                 'totalProducts' => $totalProduct,
+                'totalOrders' => $totalOrders,
+                'totalIncome' => $totalIncome
             ]);
         }
     }
@@ -199,16 +212,25 @@ class SellerController extends Controller
         return redirect()->route('seller.all-products');
     }
 
-    public function getRevenue()
+    public function getRevenue(Request $request)
     {
-        return view('seller/revenue_seller');
+        $akun = $request->cookie('account');
+        $akun = unserialize($akun);
+
+        $transactions = Transaction::with('product')->where('seller_id', $akun->id)->get();
+        return view('seller/main_page', [
+            'title' => 'Penjual: Pendapatan',
+            'style' => '/styles/seller/total-income.css',
+            'account' => $akun,
+            'transactions' => $transactions
+        ]);
     }
 
     public function confirmOrders()
     {
         return view('seller/confirm_order', [
             'title' => 'Penjual: Konfirmasi Pesanan',
-            'style' => '/styles/seller/confirm-order.css'
+            'style' => '/styles/seller/total-income.css'
         ]);
     }
 }

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
+use App\Models\Transaction;
 
 class AdminController extends Controller
 {
@@ -163,8 +164,29 @@ class AdminController extends Controller
 
     public function totalRevenue()
     {
+        $revenueTotal = 0;
+
+        $transactions = Transaction::with('seller')
+                        ->where('status', 'done')
+                        ->orderBy('seller_id')
+                        ->get();
+
+        $transactions = $transactions->groupBy('seller_id');
+
+        foreach($transactions as $seller => $transact){
+            foreach($transact as $trans){
+                $revenueTotal += $trans->price;
+            }
+        }
+
+        $totalSeller = Seller::count();
+
+
         return view('/admin/total_revenue', [
             'title' => 'Admin: Total Pendapatan',
+            'transactions' => $transactions,
+            'totalSeller' => $totalSeller,
+            'revenueTotal' => $revenueTotal
         ]);
     }
 }

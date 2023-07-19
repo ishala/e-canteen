@@ -8,6 +8,7 @@ use App\Http\Requests\StoreBuyerRequest;
 use App\Http\Requests\UpdateBuyerRequest;
 use App\Models\Product;
 use App\Models\Seller;
+use App\Models\Transaction;
 
 class BuyerController extends Controller
 {
@@ -28,7 +29,7 @@ class BuyerController extends Controller
         $akun = unserialize($akun);
 
         $product = $product->with('seller')->get();
-        $seller = $seller->all();
+        $seller = $seller->with('product')->get();
 
         return view('buyer/products', [
             'title' => 'Pembeli: Cari Produk',
@@ -72,8 +73,28 @@ class BuyerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Buyer $buyer)
+    public function show(Request $request, $seller)
     {
+        $akun = $request->cookie('account');
+        $akun = unserialize($akun);
+        $products = Product::with('seller')->where('seller_id', $seller)->get();
+        
+        $ordered = Transaction::where('seller_id', $seller)
+                                ->where('status', 'done')
+                                ->get()
+                                ->count();
+                                
+        $seller = Seller::where('id', $seller)->first();
+
+
+        return view('buyer/products', [
+            'title' => 'Pembeli: Produk Penjual',
+            'style' => '/styles/buyer/seller-products.css',
+            'account' => $akun,
+            'products' => $products,
+            'seller' => $seller,
+            'ordered' => $ordered
+        ]);
     }
 
     /**

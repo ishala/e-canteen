@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway&display=swap');
+
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+
+img {
+    width: 100px;
+}
+
+.navbar-brand{
+    width: 180px;
+    padding-left: 15px;
+}
+
+.navbar{
+    background-color: #EBFFEC;
+    max-height: 150px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.nav-link{
+    font-size: 20px;
+}
+
+.profile {
+    height: 40px;
+}
+
+.admin {
+    font-size: 18px;
+}
+
+.col-5.align-items-center:last-child {
+    text-align: right;
+}
+
+.total-mitra-container {
+    background-color: #C7E8CA;
+}
+
+.total-pendapatan {
+    background-color: #C7E8CA;
+}
+
+.large-text {
+    font-size: 24px;
+}
+
+.large-text1 {
+    font-size: 20px;
+}
+
+/* Tambahkan border pada class "rounded-5" */
+.rounded-5 {
+    border: 2px solid #ced4da;
+}

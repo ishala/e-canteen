@@ -4,8 +4,6 @@
 
 
 
-
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -22,11 +20,11 @@
 
 <div class="menu-container wrapper-seller d-flex flex-row justify-content-center" id="search-result-seller">
     @foreach ($sellers as $seller)
-        <div class="btn menu-item col-3 me-3">
+        <a href="{{ route('buyer.seller-products', $seller) }}" class="btn menu-item col-3 me-3">
             <img src="https://asset.kompas.com/crops/Kyp-MBp3Kf0PLGveth_zzhU2gfI=/0x0:1000x667/750x500/data/photo/2020/07/11/5f09e008e7fee.jpg"
                 alt="Menu 3" />
             <p class="text-center">{{ $seller->name }}</p>
-        </div>
+        </a>
     @endforeach
 </div>
 
@@ -71,11 +69,11 @@
         </div>
     @endforeach`);
         let allSeller = $(`@foreach ($sellers as $seller)
-        <div class="btn menu-item col-3 me-3">
+        <a href="" class="btn menu-item col-3 me-3">
             <img src="https://asset.kompas.com/crops/Kyp-MBp3Kf0PLGveth_zzhU2gfI=/0x0:1000x667/750x500/data/photo/2020/07/11/5f09e008e7fee.jpg"
                 alt="Menu 3" />
             <p class="text-center">{{ $seller->name }}</p>
-        </div>
+        </a>
     @endforeach`)
 
         $('#search-input').keyup(function() {
@@ -102,10 +100,11 @@
                         dataFoundSeller.forEach(function(data) {
                             let name = data.name;
 
-                            let resultHTML = '<div class="btn menu-item col-3 me-3">' +
+                            let resultHTML =
+                                '<a href="" class="btn menu-item col-3 me-3">' +
                                 '<img src="https://asset.kompas.com/crops/Kyp-MBp3Kf0PLGveth_zzhU2gfI=/0x0:1000x667/750x500/data/photo/2020/07/11/5f09e008e7fee.jpg"alt = "Menu 3" / > ' +
                                 '<p class="text-center">' + name + '</p>' +
-                                '</div>';
+                                '</a>';
 
                             $('#search-result-seller').append(resultHTML);
                         });
