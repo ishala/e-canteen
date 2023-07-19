@@ -45,6 +45,7 @@ body{
 
 
 .kotak {
+    margin-top: -70px;
     height: 200px;
     width: 400px;
     max-height: 200px;
@@ -54,6 +55,8 @@ body{
 
 .cardd {
     margin-right: 220px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 
@@ -77,4 +80,21 @@ font-family: Poppins;
 font-style: normal;
 font-weight: 600;
 line-height: normal;
+}
+
+.tombol {
+    margin-left: 20px;
+}
+
+.tombol .order, .tombol .delivered, .tombol .canceled, .tombol .done{
+    width: 250px;
+    margin-left: 15px;
+}
+
+.tombol .accept, .tombol .decline {
+    width: 120px;
+}
+
+.meja {
+    margin-bottom: 70px;
 }

@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Models\HistoryTransaction;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreHistoryTransactionRequest;
 use App\Http\Requests\UpdateHistoryTransactionRequest;
 
@@ -72,34 +73,69 @@ class HistoryTransactionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Request $request, HistoryTransaction $historyTransaction)
+    public function show(Request $request)
     {
         $akun = $request->cookie('account');
         $akun = unserialize($akun);
+        $totalTrans = null;
+
+        //Ambil semua data transaksi yang memiliki id seller sama dengan seller yg sdg login
+        $transactions = Transaction::with('product')
+            ->where('seller_id', $akun->id)
+            ->orderBy('num_table')
+            ->get();
+
+        // Mengelompokkan data transaksi berdasarkan num_table
+        $byTables = $transactions->groupBy('num_table');
+        //menghitung banyak table yang ada di dalam per grup meja
+        foreach ($byTables as $byTable => $table) {
+            $totalTrans = $table->count();
+        }
+
+
+
         return view('seller/main_page', [
             'title' => 'Penjual: Lihat Pesanan',
             'style' => '/styles/seller/incoming-orders.css',
-            'account' => $akun
+            'account' => $akun,
+            'transactions' => $byTables,
+            'totalOrders' => $totalTrans,
+            // 'totalPrice' => $totalPrice
         ]);
     }
 
-    public function showDetail(Request $request, HistoryTransaction $historyTransaction)
+    public function showDetail(Request $request, $tables)
     {
         $akun = $request->cookie('account');
         $akun = unserialize($akun);
+
+        $transactions = Transaction::with('product')
+            ->where('seller_id', $akun->id)
+            ->where('num_table', $tables)
+            ->get();
+
         return view('seller/main_page', [
             'title' => 'Penjual: Detail Pesanan',
             'style' => '/styles/seller/detail-orders.css',
-            'account' => $akun
+            'account' => $akun,
+            'transactions' => $transactions,
+            'numTable' => $tables
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(HistoryTransaction $historyTransaction)
+    public function edit(Request $request)
     {
-        //
+        $status = $request->input('status');
+        $transId = $request->input('transId');
+
+        if ($status !== null && $transId !== null) {
+            Transaction::where('id', $transId)->update(['status' => $status]);
+        }
+
+        return response()->json($status);
     }
 
     /**

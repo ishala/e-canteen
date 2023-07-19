@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->boolean('paid')->default(false);
             $table->string('status')->nullable();
+            $table->integer('num_table')->nullable();
             $table->foreignId('buyer_id');
             $table->foreignId('product_id');
             $table->foreignId('seller_id');

@@ -69,13 +69,14 @@ Route::get('/seller/all-products/add-product', [SellerController::class, 'create
 Route::get('/seller/all-products/{product:id}/edit-product', [SellerController::class, 'edit'])->name('seller.edit-product');
 Route::get('/seller/revenue', [SellerController::class, 'getRevenue'])->name('seller.revenue');
 Route::get('/seller/incoming-orders', [HistoryTransactionController::class, 'show'])->name('seller.incoming-orders');
-Route::get('/seller/incoming-orders/detail-orders', [HistoryTransactionController::class, 'showDetail'])->name('seller.detail-orders');
+Route::get('/seller/incoming-orders/detail-orders/{tables}', [HistoryTransactionController::class, 'showDetail'])->name('seller.detail-orders');
 
 Route::post('/seller/all-products', [SellerController::class, 'show'])->name('seller.all-products');
 Route::post('/seller/all-products/add-product', [SellerController::class, 'store'])->name('seller.add-product');
 Route::post('/seller/all-products/{product:id}/edit-product', [SellerController::class, 'update'])->name('seller.update-product');
 Route::post('/seller/all-products/{product:id}/delete-product', [SellerController::class, 'destroy'])->name('seller.delete-product');
 Route::post('/seller/all-products/search', [SellerController::class, 'searchProcess'])->name('seller.search-products-process');
+Route::post('/seller/incoming-orders/detail-orders', [HistoryTransactionController::class, 'edit'])->name('seller.detail-orders-process');
 
 //Buyer
 Route::get('/buyer', [ProductController::class, 'index'])->name('buyer');

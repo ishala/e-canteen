@@ -16,7 +16,7 @@ class Transaction extends Model
     }
 
     public function history(){
-        return $this->belongsTo(HistoryTransaction::class);
+        return $this->hasMany(HistoryTransaction::class);
     }
 
     public function product(){

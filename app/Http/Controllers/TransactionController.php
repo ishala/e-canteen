@@ -65,7 +65,7 @@ class TransactionController extends Controller
         } else {
 
             $product = $product->first();
-    
+
             $validatedData = [
                 'price' => $product->price,
                 'quantity' => $qty,
@@ -86,7 +86,7 @@ class TransactionController extends Controller
 
             Transaction::create($validatedData);
         }
-    
+
 
         return redirect()->route('buyer.cart');
     }
@@ -237,8 +237,8 @@ class TransactionController extends Controller
                 $this->create($request, $product, $qty);
                 //cari data transaksi dari ahsil create data transaksi di atas
                 $transaction = Transaction::where('product_id', $productId)
-                                ->where('buyer_id', $akun->id)
-                                ->get();
+                    ->where('buyer_id', $akun->id)
+                    ->get();
 
                 //mengambil hanya kolom quantity dan price dari tabel transactions
                 $sumProduct = $transaction->pluck('quantity');
@@ -246,7 +246,7 @@ class TransactionController extends Controller
                 foreach ($sumProduct as $sum) {
                     $totalProduct += $sum;
                 }
-        
+
                 //menjumlahkan total harga yang akan di co
                 $sumPrice = $transaction->pluck('price');
                 foreach ($sumPrice as $sum) {
@@ -263,7 +263,7 @@ class TransactionController extends Controller
                 foreach ($sumProduct as $sum) {
                     $totalProduct += $sum;
                 }
-        
+
                 //menjumlahkan total harga yang akan di co
                 $sumPrice = $transaction->pluck('price');
                 foreach ($sumPrice as $sum) {
@@ -318,7 +318,7 @@ class TransactionController extends Controller
         HistoryTransaction::create($data);
 
         $allTransId = explode(', ', $allTransId);
-        Transaction::whereIn('id', $allTransId)->update(['paid' => true, 'status' => 'waiting']);
+        Transaction::whereIn('id', $allTransId)->update(['paid' => true, 'status' => 'waiting', 'num_table' => $seatNumber]);
 
 
         return redirect()->route('buyer.cart');

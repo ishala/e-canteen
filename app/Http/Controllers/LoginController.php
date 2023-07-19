@@ -40,15 +40,15 @@ class LoginController extends Controller
             if (!empty($account)) {
                 //Kalo akunnya admin
                 if ($account->role == 1) {
-                    return redirect()->route('admin')->cookie('account', serialize($account), 60, '/admin');
+                    return redirect()->route('admin')->cookie('account', serialize($account), 1800, '/admin');
                 }
                 //Kalo akunnya seller
                 else if ($account->role == 2) {
-                    return redirect()->route('seller')->cookie('account', serialize($account), 60, '/seller');;
+                    return redirect()->route('seller')->cookie('account', serialize($account), 1800, '/seller');;
                 }
                 //kalo akunnya buyer
                 else if ($account->role == 3) {
-                    return redirect()->route('buyer')->cookie('account', serialize($account), 60, '/buyer');;
+                    return redirect()->route('buyer')->cookie('account', serialize($account), 1800, '/buyer');;
                 }
                 break;
             }
